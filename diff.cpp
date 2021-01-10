@@ -17,6 +17,14 @@
 
 using namespace std;
 
+/*
+* class DiffSession:
+* This class provides the user a single session (as in Windows FC diff tool) to
+* get the updates in two file versions. The user must pass atleast two arguments
+* in addition to the app call. If any of these arguments are missing the program
+* will terminate. However, the user may add up to three additional arguments for 
+* additional diff options indicated in the class constructor.
+*/
 class DiffSession {
 public:
 
@@ -159,7 +167,8 @@ public:
             }
         }
 
-        return updateList;
+        cout << "Indefinite Lines Count" << endl;
+        exit(EXIT_FAILURE);
     }
 
     // Check if two strings are the same whether whitespaces are included or not
@@ -253,6 +262,12 @@ int main(int argc, char** argv) {
         "|                       |_|   |_|     |\n"
         "|                                     |\n"
         "| Version 1.0                         |\n"
+        "+-------------------------------------+\n"
+        "| DiffCpp Old_File_Path New_File_Path |\n"
+        "|                                     |\n"
+        "| /N -> Display the line numbers      |\n"
+        "| /W -> Ignore Whitespaces            |\n"
+        "| /A -> Display the changes only      |\n"
         "+-------------------------------------+\n" << endl;
 
 
