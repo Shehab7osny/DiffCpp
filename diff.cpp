@@ -239,7 +239,7 @@ private:
          displayUpdateOnly = false,
          isSameFie         = true;
 
-    // Extracts file name from file path
+    // Extract file name from file path
     string getFileName(string path) {
         int strLength = path.length();
         string name = "";
