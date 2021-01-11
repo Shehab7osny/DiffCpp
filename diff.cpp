@@ -29,19 +29,19 @@ class DiffSession {
 public:
 
     // Start a single session for files comparison
-    DiffSession(int argc, char** argv) {
+    DiffSession(int noOfArgs, char** argsList) {
 
         string argElement;
 
-        this->filePath1 = argv[1];  // Old version file
-        this->filePath2 = argv[2];  // New version file
+        this->filePath1 = argsList[1];  // Old version file
+        this->filePath2 = argsList[2];  // New version file
         this->fileName1 = getFileName(this->filePath1);
         this->fileName2 = getFileName(this->filePath2);
 
         // Assign additional options for the current session
-        for (int i = 3; i < argc; i++) {
+        for (int i = 3; i < noOfArgs; i++) {
 
-            argElement = argv[i];
+            argElement = argsList[i];
 
             if (argElement == "/N") {
                 this->printLineNumber = true;
