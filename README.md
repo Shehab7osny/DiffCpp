@@ -30,7 +30,7 @@ Optional Arguments
 ## Sample Use Case
 
 
-File 1 (recursion_Old.py)
+# File 1 (recursion_Old.py)
 ```Python
 def tri_recursion(k):
   if(k > 0):
@@ -40,7 +40,7 @@ def tri_recursion(k):
   return result
 ```
 
-File 2 (recursion_New.py)
+# File 2 (recursion_New.py)
 ```Python
 def tri_recursion(k):
   if(k > 0):
@@ -49,4 +49,13 @@ def tri_recursion(k):
   else:
     result = 0
   return result
+```
+# Decide which options to use
+* Since this is a code, the line number is vital. So we may need to include ```/N``` option.
+* Since this is a python code, whitespaces are vital. So we must avoid using ```/W``` option.
+* Since this is a small file, it is preferred to display the whole updated file. So we may avoid using ```/A``` option.
+
+# With all this being said, the command line to get the job done will be as follows:
+```
+DiffCpp ./recursion_Old.py ./recursion_New.py [/N]
 ```
