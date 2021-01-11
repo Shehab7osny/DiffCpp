@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.19.2)  # CMake version check
+cmake_minimum_required(VERSION 3.19.3)  # CMake version check
 project(DiffCpp)	               	# Create project "simple_example"
 set(CMAKE_CXX_STANDARD 14)            	# Enable c++14 standard
 
