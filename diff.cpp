@@ -285,7 +285,6 @@ int main(int argc, char** argv) {
         "| /A -> Display the changes only                  |\n"
         "+-------------------------------------------------+\n" << endl;
 
-
     if (argc < 3) {
         cout << "Insufficient number of file specifications" << endl;
         return 0;
