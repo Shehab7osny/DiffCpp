@@ -1,4 +1,4 @@
-name: Project Test Automation
+name: Linux Build
 
 on:
   push:
