@@ -21,3 +21,5 @@ jobs:
       run: cmake -Bbuild -H.
     - name: cmake make
       run: cmake --build build/ --target all
+      env: 
+        MAKEFLAGS: "-j2"
