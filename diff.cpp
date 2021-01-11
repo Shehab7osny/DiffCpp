@@ -89,17 +89,17 @@ public:
 
         vector<string> lines;
         string singleLine;
-        fstream newfile;
+        fstream inputFile;
 
-        newfile.open(path);
+        inputFile.open(path);
 
         // Check that the specified file can open successfully
-        if (newfile.is_open()) {
+        if (inputFile.is_open()) {
 
-            while (getline(newfile, singleLine)) {
+            while (getline(inputFile, singleLine)) {
                 lines.push_back(singleLine);
             }
-            newfile.close();
+            inputFile.close();
         }
         // Terminate the program
         else {
