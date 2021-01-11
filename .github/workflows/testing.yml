@@ -34,9 +34,8 @@ jobs:
     # build project
     - name: mkdir
       run: mkdir build
-    - name: cmake build
-      run: cmake -Bbuild -H.
-    - name: cmake make
-      run: cmake --build build/ --target all
-      env:
-        MAKEFLAGS: "-j2"
+    - name: CMake Configure 
+      run: cmake -Bbuild -GNinja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=${{ matrix.config.cc }} -DCMAKE_CXX_COMPILER=${{ matrix.config.cxx }}
+
+    - name: CMake Build
+      run: cmake --build build
