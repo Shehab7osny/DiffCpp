@@ -17,6 +17,24 @@
 
 using namespace std;
 
+static const char* Starting_MSG =
+"+-------------------------------------------------+\n"
+"|        ____  _  __  __  ____                    |\n"
+"|       |  _ \\(_)/ _|/ _|/ ___|_ __  _ __         |\n"
+"|       | | | | | |_| |_| |   | '_ \\| '_ \\        |\n"
+"|       | |_| | |  _|  _| |___| |_) | |_) |       |\n"
+"|       |____/|_|_| |_|  \\____| .__/| .__/        |\n"
+"|                             |_|   |_|           |\n"
+"|                                                 |\n"
+"|       Version 1.0                               |\n"
+"+-------------------------------------------------+\n"
+"| DiffCpp  File1_Path  File2_Path  [/N] [/W] [/A] |\n"
+"|                                                 |\n"
+"| /N -> Display the line numbers                  |\n"
+"| /W -> Ignore Whitespaces                        |\n"
+"| /A -> Display the changes only                  |\n"
+"+-------------------------------------------------+\n";
+
 /**
 * DiffSession
 * This class provides the user a single session  (as in Windows FC diff tool) to
@@ -261,23 +279,7 @@ private:
 
 int main(int argc, char** argv) {
     
-    cout << 
-        "+-------------------------------------------------+\n"
-        "|        ____  _  __  __  ____                    |\n"
-        "|       |  _ \\(_)/ _|/ _|/ ___|_ __  _ __         |\n"
-        "|       | | | | | |_| |_| |   | '_ \\| '_ \\        |\n"
-        "|       | |_| | |  _|  _| |___| |_) | |_) |       |\n"
-        "|       |____/|_|_| |_|  \\____| .__/| .__/        |\n"
-        "|                             |_|   |_|           |\n"
-        "|                                                 |\n"
-        "|       Version 1.0                               |\n"
-        "+-------------------------------------------------+\n"
-        "| DiffCpp  File1_Path  File2_Path  [/N] [/W] [/A] |\n"
-        "|                                                 |\n"
-        "| /N -> Display the line numbers                  |\n"
-        "| /W -> Ignore Whitespaces                        |\n"
-        "| /A -> Display the changes only                  |\n"
-        "+-------------------------------------------------+\n" << endl;
+    cout << Starting_MSG << endl;
 
     if (argc < 3) {
         cout << "Insufficient number of file specifications" << endl;
