@@ -34,8 +34,17 @@ File 1 (recursion_Old.py)
 def tri_recursion(k):
   if(k > 0):
     result = k + tri_recursion(k - 1)
-    print(result)
   else:
     result = 1
+  return result
+```
+File 2 (recursion_New.py)
+```Python
+def tri_recursion(k):
+  if(k > 0):
+    result = k + tri_recursion(k - 1)
+    print(result)
+  else:
+    result = 0
   return result
 ```
