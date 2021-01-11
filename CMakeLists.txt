@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION "3.19.2")  # CMake version check
+cmake_minimum_required(VERSION 3.19.2)  # CMake version check
 project(DiffCpp)	               	# Create project "simple_example"
 set(CMAKE_CXX_STANDARD 14)            	# Enable c++14 standard
 
@@ -6,4 +6,4 @@ set(CMAKE_CXX_STANDARD 14)            	# Enable c++14 standard
 set(SOURCE_FILES diff.cpp)
 
 # Add executable target with source files listed in SOURCE_FILES variable
-add_executable("${PROJECT_NAME}" "${SOURCE_FILES}")
+add_executable(${PROJECT_NAME} ${SOURCE_FILES})
