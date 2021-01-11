@@ -83,11 +83,11 @@ DiffCpp ./recursion_Old.py ./recursion_New.py /N
 | /A -> Display the changes only                  |
 +-------------------------------------------------+
 
-File1 -> recursion_New.py
-File2 -> recursion_Old.py
+File2 -> recursion_New.py
+File1 -> recursion_Old.py
 
 +-------+-------+---+----------------------------------------
-| File1 | File2 |   | Updated File - recursion_New.py
+| File2 | File1 |   | Updated File - recursion_New.py
 +-------+-------+---+----------------------------------------
 | 1     | 1     |   | def tri_recursion(k):
 | 2     | 2     |   |   if(k > 0):
