@@ -11,9 +11,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    # install dependencies
-    - name: boost
-      run: sudo apt-get update && sudo apt-get install -yq libboost1.65-dev
+    # install and cache dependencies
+    - name: Cache boost
+      uses: actions/cache@v1.0.3
+      id: cache-boost
+      with:
+        path: "~/boost"
+        key: libboost1.65-dev
+    - name: Install boost
+      env:
+        CACHE_HIT: ${{steps.cache-boost.outputs.cache-hit}}
+      run: |
+        if [[ "$CACHE_HIT" == 'true' ]]; then
+          sudo cp --force --recursive ~/boost/* /
+        else
+          sudo apt-get update && sudo apt-get install -yq libboost1.65-dev
+          mkdir -p ~/boost
+          for dep in libboost1.65-dev; do
+              dpkg -L $dep | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/boost/
+          done
+        fi
     # build project
     - name: mkdir
       run: mkdir build
@@ -21,5 +38,5 @@ jobs:
       run: cmake -Bbuild -H.
     - name: cmake make
       run: cmake --build build/ --target all
-      env: 
+      env:
         MAKEFLAGS: "-j2"
