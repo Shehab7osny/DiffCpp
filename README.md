@@ -30,7 +30,7 @@ Optional Arguments
 ## Sample Use Case
 
 
-### File 1 (recursion_Old.py)
+#### File 1 (recursion_Old.py)
 ```Python
 def tri_recursion(k):
   if(k > 0):
@@ -40,7 +40,7 @@ def tri_recursion(k):
   return result
 ```
 
-### File 2 (recursion_New.py)
+#### File 2 (recursion_New.py)
 ```Python
 def tri_recursion(k):
   if(k > 0):
@@ -50,21 +50,21 @@ def tri_recursion(k):
     result = 0
   return result
 ```
-### Decide which options to use
+#### Decide which options to use
 * Since this is a code, the line number is vital. So we may need to include ```/N``` option.
 * Since this is a python code, whitespaces are vital. So we must avoid using ```/W``` option.
 * Since this is a small file, it is preferred to display the whole updated file. So we may avoid using ```/A``` option.
 
-### File Paths
+#### File Paths
 Assume that both files are in the same directory of the executable DiffCpp.
 (The files can be placed in any other directory)
 
-### With all this being said, the command line to get the job done will be as follows:
+#### With all this being said, the command line to get the job done will be as follows:
 ```
 DiffCpp ./recursion_Old.py ./recursion_New.py /N
 ```
 
-### Expected Output
+#### Expected Output
 ```
 +-------------------------------------------------+
 |        ____  _  __  __  ____                    |
