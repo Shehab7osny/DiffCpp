@@ -11,10 +11,18 @@ g++ diff.cpp -o DiffCpp
 ```
 DiffCpp File_1_Path File_2_Path [/N] [/A] [/W]
 ```
+
+Main Arguments
+
 | Argument                | Description                                                   |
 |-------------------------|---------------------------------------------------------------|
 | File_1_Path	            |	This represents the old version of the file                   |
 | File_2_Path			        | This represents the new version of the file                   |
+
+Optional Arguments
+
+| Argument                | Description                                                   |
+|-------------------------|---------------------------------------------------------------|
 | /N			                | Option to add lines number to the displayed output            |
 | /A		                  | Option to display the updates only and ignore common matches  |
 | /W	                    | Option to ignore whitespaces difference while comparing files |
