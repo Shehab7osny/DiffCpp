@@ -238,7 +238,7 @@ private:
         int strLength = path.length();
         string name = "";
         for (int i = strLength - 1; i >= 0; i--) {
-            if (path[i] == '\\') break;
+            if (path[i] == '\\' || path[i] == '/') break;
             name = path[i] + name;
         }
         return name;
