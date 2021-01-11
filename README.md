@@ -8,11 +8,11 @@ g++ diff.cpp -o DiffCpp
 ```
 
 ## Usage
-### Windows
+* ### Windows
 ```
 DiffCpp File_1_Path File_2_Path [/N] [/A] [/W]
 ```
-### Linux
+* ### Linux
 ```
 ./DiffCpp File_1_Path File_2_Path [/N] [/A] [/W]
 ```
