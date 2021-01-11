@@ -177,15 +177,15 @@ public:
         // Display the table if there is atleast one update in the file
         if (!(this->isSameFie)) {
 
-            cout << "File1 -> " << this->fileName2 << endl;
-            cout << "File2 -> " << this->fileName1 << endl;
+            cout << "File2 -> " << this->fileName2 << endl;
+            cout << "File1 -> " << this->fileName1 << endl;
             cout << endl;
 
             // Display Column Headers
             if (this->printLineNumber) cout << "+" << "-------" << "+" << "-------";
             cout << "+---+" << "--------------------------------------------------------------------------" << endl;
 
-            if (this->printLineNumber) cout << "| " << "File1\t" << "| " << "File2\t";
+            if (this->printLineNumber) cout << "| " << "File2\t" << "| " << "File1\t";
             cout << "|   | " << "Updated File - " << this->fileName2 << endl;
 
             if (this->printLineNumber) cout << "+" << "-------" << "+" << "-------";
