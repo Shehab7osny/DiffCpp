@@ -23,6 +23,19 @@ Optional Arguments
 
 | Argument                | Description                                                   |
 |-------------------------|---------------------------------------------------------------|
-| /N			                | Option to add lines number to the displayed output            |
+| /N			                | Option to add line number to the displayed output             |
 | /A		                  | Option to display the updates only and ignore common matches  |
 | /W	                    | Option to ignore whitespaces difference while comparing files |
+
+## Sample Use Case
+
+File 1 (recursion_Old.py)
+```Python
+def tri_recursion(k):
+  if(k > 0):
+    result = k + tri_recursion(k - 1)
+    print(result)
+  else:
+    result = 1
+  return result
+```
