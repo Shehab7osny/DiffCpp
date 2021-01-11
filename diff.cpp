@@ -83,7 +83,6 @@ public:
             }
             newfile.close();
         }
-
         // Terminate the program
         else {
             cout << "Can not open the specified directory - No such file or folder" << endl;
@@ -127,7 +126,6 @@ public:
                     xPrevious  = get<xCoordinate>(mapGrid[k + 1]);
                     x = xPrevious;
                 }
-
                 // moveRight - This is to delete a line from the old file
                 else {
                     updateList = get<lastUpdate>(mapGrid[k - 1]);
@@ -142,7 +140,6 @@ public:
                     updateList.push_back({ "Insert", linesFile2[y - 1] });
                     if (this->isSameFie) this->isSameFie = false;
                 }
-
                 // Update the history list with a Deletion
                 else if (1 <= x && x <= linesCount1) {
                     updateList.push_back({ "Delete", linesFile1[x - 1] });
@@ -223,7 +220,6 @@ public:
             if (this->printLineNumber) cout << "+" << "-------" << "+" << "-------";
             cout << "+---+" << "--------------------------------------------------------------------------" << endl;
         }
-
         else {
             cout << "There are no significant updates between the two files" << endl;
         }
