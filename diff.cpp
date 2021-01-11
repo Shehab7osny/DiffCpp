@@ -41,15 +41,14 @@ static const char* Starting_MSG =
 * get the updates in two file versions. The user must pass atleast two arguments
 * in addition to the exe call. If any of these arguments are missing the program
 * will terminate. However, the user may add up to three additional arguments for 
-* additional diff options indicated in the class constructor.
+* additional diff options indicated in the class constructor. This class compares
+* the two text files based on Myers' Algorithm of diff.
 */
 class DiffSession {
 public:
 
     // Start a single session for files comparison
     DiffSession(int noOfArgs, char** argsList) {
-
-        string argElement;
 
         this->filePath1 = argsList[1];  // Old version file
         this->filePath2 = argsList[2];  // New version file
@@ -59,15 +58,13 @@ public:
         // Assign additional options for the current session
         for (int i = 3; i < noOfArgs; i++) {
 
-            argElement = argsList[i];
-
-            if (argElement == "/N") {
+            if ((string)argsList[i] == "/N") {
                 this->printLineNumber = true;
             }
-            else if (argElement == "/W") {
+            else if ((string)argsList[i] == "/W") {
                 this->ignoreWhiteSpaces = true;
             }
-            else if (argElement == "/A") {
+            else if ((string)argsList[i] == "/A") {
                 this->displayUpdateOnly = true;
             }
         }
@@ -88,8 +85,8 @@ public:
     vector<string> getLinesFromFile(string path) {
 
         vector<string> lines;
-        string singleLine;
         fstream inputFile;
+        string singleLine;
 
         inputFile.open(path);
 
@@ -199,34 +196,51 @@ public:
             cout << "File1 -> " << this->fileName1 << endl;
             cout << endl;
 
-            // Display Column Headers
-            if (this->printLineNumber) cout << "+" << "-------" << "+" << "-------";
-            cout << "+---+" << "--------------------------------------------------------------------------" << endl;
+            // Display Column Headers Borders
+            if (this->printLineNumber) {
+                cout << "+" << "-------" << "+" << "-------";
+            }
+            cout << "+---+" << string(80, '-') << endl;
 
-            if (this->printLineNumber) cout << "| " << "File2\t" << "| " << "File1\t";
+            // Display Column Headers Contents
+            if (this->printLineNumber) {
+                cout << "| " << "File2\t" << "| " << "File1\t";
+            }
             cout << "|   | " << "Updated File - " << this->fileName2 << endl;
 
-            if (this->printLineNumber) cout << "+" << "-------" << "+" << "-------";
-            cout << "+---+" << "--------------------------------------------------------------------------" << endl;
+            // Display Column Headers Borders
+            if (this->printLineNumber) {
+                cout << "+" << "-------" << "+" << "-------";
+            }
+            cout << "+---+" << string(80, '-') << endl;
 
             // Display List of Commits
             for (unsigned int i = 0; i < result.size(); i++) {
 
                 if (result[i][0] == "Insert") {
-                    if (this->printLineNumber) cout << "| " << countLinesUpdated << "\t" << "|\t";
+
+                    if (this->printLineNumber) {
+                        cout << "| " << countLinesUpdated << "\t" << "|\t";
+                    }
                     cout << "| + | " << result[i][1] << endl;
 
                     countLinesUpdated++;
                 }
                 else if (result[i][0] == "Delete") {
-                    if (this->printLineNumber)cout << "|\t" << "| " << countLinesPrevious << "\t";
+                    if (this->printLineNumber) {
+                        cout << "|\t" << "| " << countLinesPrevious << "\t";
+                    }
                     cout << "| - | " << result[i][1] << endl;
 
                     countLinesPrevious++;
                 }
                 else if (result[i][0] == "Keep" ) {
+
                     if (!(this->displayUpdateOnly)) {
-                        if (this->printLineNumber) cout << "| " << countLinesUpdated << "\t" << "| " << countLinesPrevious << "\t";
+                        if (this->printLineNumber) {
+                            cout << "| " << countLinesUpdated  << "\t" << 
+                                    "| " << countLinesPrevious << "\t";
+                        }
                         cout << "|   | " << result[i][1] << endl;
                     }
 
@@ -235,8 +249,10 @@ public:
                 }
             }
 
-            if (this->printLineNumber) cout << "+" << "-------" << "+" << "-------";
-            cout << "+---+" << "--------------------------------------------------------------------------" << endl;
+            if (this->printLineNumber) {
+                cout << "+" << "-------" << "+" << "-------";
+            }
+            cout << "+---+" << string(80, '-') << endl;
         }
         else {
             cout << "There are no significant updates between the two files" << endl;
