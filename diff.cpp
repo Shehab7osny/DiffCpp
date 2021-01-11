@@ -46,12 +46,10 @@ public:
             if (argElement == "/N") {
                 this->printLineNumber = true;
             }
-
-            if (argElement == "/W") {
+            else if (argElement == "/W") {
                 this->ignoreWhiteSpaces = true;
             }
-
-            if (argElement == "/A") {
+            else if (argElement == "/A") {
                 this->displayUpdateOnly = true;
             }
         }
