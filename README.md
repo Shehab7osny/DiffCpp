@@ -1,3 +1,4 @@
+![Build Status](https://github.com/Shehab7osny/diffCpp/workflows/Linux%20Build/badge.svg)
 # DiffCpp
 This package is used to compare two text files and show the difference
 
@@ -8,8 +9,13 @@ g++ diff.cpp -o DiffCpp
 ```
 
 ## Usage
+### Windows
 ```
 DiffCpp File_1_Path File_2_Path [/N] [/A] [/W]
+```
+### Linux
+```
+./DiffCpp File_1_Path File_2_Path [/N] [/A] [/W]
 ```
 
 Main Arguments
@@ -83,11 +89,11 @@ DiffCpp ./recursion_Old.py ./recursion_New.py /N
 | /A -> Display the changes only                  |
 +-------------------------------------------------+
 
-File1 -> recursion_New.py
-File2 -> recursion_Old.py
+File2 -> recursion_New.py
+File1 -> recursion_Old.py
 
 +-------+-------+---+----------------------------------------
-| File1 | File2 |   | Updated File - recursion_New.py
+| File2 | File1 |   | Updated File - recursion_New.py
 +-------+-------+---+----------------------------------------
 | 1     | 1     |   | def tri_recursion(k):
 | 2     | 2     |   |   if(k > 0):
@@ -99,3 +105,6 @@ File2 -> recursion_Old.py
 | 7     | 6     |   |   return result
 +-------+-------+---+----------------------------------------
 ```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
