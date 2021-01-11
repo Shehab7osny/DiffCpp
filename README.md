@@ -1,6 +1,5 @@
-![CI status](https://github.com/<Shehab7osny>/<diffCpp>/workflows/<Project%20Test%20Automation>/badge.svg)
-
 # DiffCpp
+![CI status](https://github.com/<Shehab7osny>/<diffCpp>/workflows/<Project%20Test%20Automation>/badge.svg)
 This package is used to compare two text files and show the difference
 
 ## Installation
