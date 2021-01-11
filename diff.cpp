@@ -17,11 +17,11 @@
 
 using namespace std;
 
-/*
-* class DiffSession:
-* This class provides the user a single session (as in Windows FC diff tool) to
+/**
+* DiffSession
+* This class provides the user a single session  (as in Windows FC diff tool) to
 * get the updates in two file versions. The user must pass atleast two arguments
-* in addition to the app call. If any of these arguments are missing the program
+* in addition to the exe call. If any of these arguments are missing the program
 * will terminate. However, the user may add up to three additional arguments for 
 * additional diff options indicated in the class constructor.
 */
@@ -35,8 +35,10 @@ public:
 
         this->filePath1 = argv[1];  // Old version file
         this->filePath2 = argv[2];  // New version file
+        this->fileName1 = getFileName(this->filePath1);
+        this->fileName2 = getFileName(this->filePath2);
 
-        // Assign additional options for the session
+        // Assign additional options for the current session
         for (int i = 3; i < argc; i++) {
 
             argElement = argv[i];
@@ -157,12 +159,11 @@ public:
                     updateList.push_back({ "Keep", linesFile1[x - 1] });
                 }
 
+                mapGrid[k] = make_tuple(x, updateList);
+
+                // Check if File1 is completely converted into File2
                 if (x >= linesCount1 && y >= linesCount2) {
                     return updateList;
-                }
-
-                else {
-                    mapGrid[k] = make_tuple(x, updateList);
                 }
             }
         }
@@ -171,37 +172,26 @@ public:
         exit(EXIT_FAILURE);
     }
 
-    // Check if two strings are the same whether whitespaces are included or not
-    bool strCompare(string line1, string line2, bool ignoreSpace) {
-
-        // To ignore spaces and tabs in the updated files
-        if (ignoreSpace) {
-            line1.erase(remove_if(line1.begin(), line1.end(), ::isspace), line1.end());
-            line2.erase(remove_if(line2.begin(), line2.end(), ::isspace), line2.end());
-            return (line1.compare(line2) == 0);
-        }
-        else {
-            return (line1.compare(line2) == 0);
-        }
-    }
-
     // Display the diff table including all commits
     void printTable(vector<vector<string>> result) {
 
         int countLinesUpdated  = 1;
         int countLinesPrevious = 1;
-        bool isUpdate = (result.size() > 0 && !(this->isSameFie)) ? true : false;
-        bool printNumberLine = true;
+        bool printNumberLine   = true;
 
         // Display the table if there is atleast one update in the file
-        if (isUpdate) {
+        if (!(this->isSameFie)) {
+
+            cout << "File1 -> " << this->fileName2 << endl;
+            cout << "File2 -> " << this->fileName1 << endl;
+            cout << endl;
 
             // Display Column Headers
             if (this->printLineNumber) cout << "+" << "-------" << "+" << "-------";
             cout << "+---+" << "--------------------------------------------------------------------------" << endl;
 
-            if (this->printLineNumber) cout << "| " << "New\t" << "| " << "Old\t";
-            cout << "|   | " << "Updated File" << endl;
+            if (this->printLineNumber) cout << "| " << "File1\t" << "| " << "File2\t";
+            cout << "|   | " << "Updated File - " << this->fileName2 << endl;
 
             if (this->printLineNumber) cout << "+" << "-------" << "+" << "-------";
             cout << "+---+" << "--------------------------------------------------------------------------" << endl;
@@ -243,32 +233,57 @@ public:
 
 private:
 
-    string filePath1, filePath2;
-    bool printLineNumber = false,
+    string filePath1, filePath2, fileName1, fileName2;
+    bool printLineNumber   = false,
          ignoreWhiteSpaces = false,
          displayUpdateOnly = false,
-         isSameFie = true;
+         isSameFie         = true;
+
+    // Extracts file name from file path
+    string getFileName(string path) {
+        int strLength = path.length();
+        string name = "";
+        for (int i = strLength - 1; i >= 0; i--) {
+            if (path[i] == '\\') break;
+            name = path[i] + name;
+        }
+        return name;
+    }
+
+    // Check if two strings are the same whether whitespaces are included or not
+    bool strCompare(string line1, string line2, bool ignoreSpace) {
+
+        // To ignore spaces and tabs in the updated files
+        if (ignoreSpace) {
+            line1.erase(remove_if(line1.begin(), line1.end(), ::isspace), line1.end());
+            line2.erase(remove_if(line2.begin(), line2.end(), ::isspace), line2.end());
+            return (line1.compare(line2) == 0);
+        }
+        else {
+            return (line1.compare(line2) == 0);
+        }
+    }
 };
 
 int main(int argc, char** argv) {
     
     cout << 
-        "+-------------------------------------+\n"
-        "|  ____  _  __  __  ____              |\n"
-        "| |  _ \\(_)/ _|/ _|/ ___|_ __  _ __   |\n"
-        "| | | | | | |_| |_| |   | '_ \\| '_ \\  |\n"
-        "| | |_| | |  _|  _| |___| |_) | |_) | |\n"
-        "| |____/|_|_| |_|  \\____| .__/| .__/  |\n"
-        "|                       |_|   |_|     |\n"
-        "|                                     |\n"
-        "| Version 1.0                         |\n"
-        "+-------------------------------------+\n"
-        "| DiffCpp Old_File_Path New_File_Path |\n"
-        "|                                     |\n"
-        "| /N -> Display the line numbers      |\n"
-        "| /W -> Ignore Whitespaces            |\n"
-        "| /A -> Display the changes only      |\n"
-        "+-------------------------------------+\n" << endl;
+        "+-------------------------------------------------+\n"
+        "|        ____  _  __  __  ____                    |\n"
+        "|       |  _ \\(_)/ _|/ _|/ ___|_ __  _ __         |\n"
+        "|       | | | | | |_| |_| |   | '_ \\| '_ \\        |\n"
+        "|       | |_| | |  _|  _| |___| |_) | |_) |       |\n"
+        "|       |____/|_|_| |_|  \\____| .__/| .__/        |\n"
+        "|                             |_|   |_|           |\n"
+        "|                                                 |\n"
+        "|       Version 1.0                               |\n"
+        "+-------------------------------------------------+\n"
+        "| DiffCpp  File1_Path  File2_Path  [/N] [/W] [/A] |\n"
+        "|                                                 |\n"
+        "| /N -> Display the line numbers                  |\n"
+        "| /W -> Ignore Whitespaces                        |\n"
+        "| /A -> Display the changes only                  |\n"
+        "+-------------------------------------------------+\n" << endl;
 
 
     if (argc < 3) {
