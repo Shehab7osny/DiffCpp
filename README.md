@@ -61,5 +61,5 @@ Assume that both files are in the same directory of the executable DiffCpp.
 
 ### With all this being said, the command line to get the job done will be as follows:
 ```
-DiffCpp ./recursion_Old.py ./recursion_New.py [/N]
+DiffCpp ./recursion_Old.py ./recursion_New.py /N
 ```
