@@ -1,4 +1,4 @@
-name: C/C++ CI
+name: Project Test Automation
 
 on:
   push:
