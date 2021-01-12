@@ -8,5 +8,5 @@ set(tool_dest "bin")
 set(lib_dest "lib")
 set(include_dest "include/${PROJECT_NAME}")
 
-add_subdirectory(src)
+#add_subdirectory(src)
 add_subdirectory(test)
