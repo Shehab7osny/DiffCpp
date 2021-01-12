@@ -7,5 +7,3 @@ set(SOURCE_FILES src/diff.cpp)
 
 # Add executable target with source files listed in SOURCE_FILES variable
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
-
-add_subdirectory(test)
