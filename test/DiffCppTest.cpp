@@ -42,10 +42,10 @@ TEST(TestCase1, CheckingSimpleDiff) {
     string lineToCheck;
 
     DiffSession session(3, argv);
-    cout << "Here" << endl;
+    
     vector<string> linesFile1 = session.getLinesFromFile(argv[1]),
                    linesFile2 = session.getLinesFromFile(argv[2]);
-
+    cout << linesFile1[0] << endl;
     vector<string> expectedOutput = 
         loadExpectedResults("/DiffCpp/test/TestCases/TestCase1/ExpectedResults.txt");
 
