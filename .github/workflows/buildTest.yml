@@ -13,10 +13,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Build
-      run: sudo apt-get install libgtest-dev
-    - uses: actions/checkout@v1
-    - name: Configure
-      run: mkdir build && cd build && cmake
-    - name: Make
-      run: cd build && make
+    - uses: actions/checkout@v2
+    # Install dependencies
+    - name: boost
+      run: sudo apt-get update && sudo apt-get install -yq libboost1.65-dev
+    # Build project
+    - name: mkdir
+      run: mkdir build
+    - name: cmake build
+      run: cmake -Bbuild -H.
+    - name: cmake make
+      run: cmake --build build/ --target all
