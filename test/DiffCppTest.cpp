@@ -36,8 +36,8 @@ vector<string> loadExpectedResults(string path)
 }
 
 TEST(TestCase1, CheckingSimpleDiff) {
-    argvArray[1] = (char*)"/DiffCpp/test/TestCases/TestCase1/Input1.txt";
-    argvArray[2] = (char*)"/DiffCpp/test/TestCases/TestCase1/Input2.txt";
+    argvArray[1] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase1/Input1.txt";
+    argvArray[2] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase1/Input2.txt";
     
     string lineToCheck;
 
@@ -47,7 +47,7 @@ TEST(TestCase1, CheckingSimpleDiff) {
                    linesFile2 = session.getLinesFromFile(argv[2]);
     cout << linesFile1[0] << endl;
     vector<string> expectedOutput = 
-        loadExpectedResults("/DiffCpp/test/TestCases/TestCase1/ExpectedResults.txt");
+        loadExpectedResults("/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase1/ExpectedResults.txt");
 
     vector<vector<string>> diff = session.getDiff(linesFile1, linesFile2);
     
