@@ -17,3 +17,5 @@ jobs:
       run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS="-Werror" ..
     - name: make
       run: cd build && make
+    - name: Run Test
+      run: /home/runner/work/DiffCpp/DiffCpp/build/test/DiffCpp.test
