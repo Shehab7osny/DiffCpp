@@ -84,7 +84,7 @@ TEST(TestCase2, ComparePythonCode) {
     }
     
     for (int i = 0; i < diff.size(); i++) {
-        cout << expectedOutput[i] << endl;
+        cout << "[" + diff[i][0] + "]" + diff[i][1] << endl;
     }
     
     for (int i = 0; i < diff.size(); i++) {
