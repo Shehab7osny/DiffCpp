@@ -36,8 +36,8 @@ vector<string> loadExpectedResults(string path)
 }
 
 TEST(TestCase1, CheckingSimpleDiff) {
-    argvArray[1] = (char*)"./TestCases/TestCase1/Input1.txt";
-    argvArray[2] = (char*)"./TestCases/TestCase1/Input2.txt";
+    argvArray[1] = (char*)"/home/runner/work/DiffCpp/DiffCpp/build/test/TestCases/TestCase1/Input1.txt";
+    argvArray[2] = (char*)"/home/runner/work/DiffCpp/DiffCpp/build/test/TestCases/TestCase1/Input2.txt";
     
     string lineToCheck;
 
@@ -46,15 +46,15 @@ TEST(TestCase1, CheckingSimpleDiff) {
     vector<string> linesFile1 = session.getLinesFromFile(argv[1]),
                    linesFile2 = session.getLinesFromFile(argv[2]);
 
-    //vector<string> expectedOutput = 
-    //    loadExpectedResults("./TestCases/TestCase1/ExpectedResults.txt");
+    vector<string> expectedOutput = 
+        loadExpectedResults("/home/runner/work/DiffCpp/DiffCpp/build/test/TestCases/TestCase1/ExpectedResults.txt");
 
     vector<vector<string>> diff = session.getDiff(linesFile1, linesFile2);
-    /*
+    
     for (int i = 0; i < diff.size(); i++) {
         lineToCheck = diff[i][0] + " " + diff[i][1];
         EXPECT_EQ(lineToCheck, expectedOutput[i]);
     }
-    */
+    
     EXPECT_TRUE(true);
 }
