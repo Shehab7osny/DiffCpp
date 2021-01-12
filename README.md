@@ -1,9 +1,8 @@
-# DiffCpp
-This package is used to compare two text files and show the difference
-
-## Package Statuses
 ![Build Status](https://github.com/Shehab7osny/diffCpp/workflows/Linux%20Build/badge.svg)
 ![coverage](https://github.com/Shehab7osny/diffCpp/workflows/Unit%20Tests/badge.svg)
+
+# DiffCpp
+This package is used to compare two text files and show the difference
 
 ## Installation
 Use the g++ compiler to compile the diff.cpp file
