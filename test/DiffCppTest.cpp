@@ -43,7 +43,7 @@ TEST(TestCase1, CheckingSimpleDiff) {
     
     vector<string> linesFile1 = session.getLinesFromFile(argv[1]),
                    linesFile2 = session.getLinesFromFile(argv[2]);
-    cout << linesFile1[0] << endl;
+
     vector<string> expectedOutput = 
         loadExpectedResults("/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase1/ExpectedResults.txt");
 
