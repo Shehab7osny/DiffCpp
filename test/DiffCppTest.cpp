@@ -38,11 +38,11 @@ vector<string> loadExpectedResults(string path)
 TEST(TestCase1, CheckingSimpleDiff) {
     argvArray[1] = (char*)"/DiffCpp/test/TestCases/TestCase1/Input1.txt";
     argvArray[2] = (char*)"/DiffCpp/test/TestCases/TestCase1/Input2.txt";
-    cout << "Here" << endl;
+    
     string lineToCheck;
 
     DiffSession session(3, argv);
-
+    cout << "Here" << endl;
     vector<string> linesFile1 = session.getLinesFromFile(argv[1]),
                    linesFile2 = session.getLinesFromFile(argv[2]);
 
