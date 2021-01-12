@@ -82,7 +82,11 @@ TEST(TestCase2, ComparePythonCode) {
     if (expectedOutput.size() != diff.size()) {
         EXPECT_TRUE(false);
     }
-
+    
+    for (int i = 0; i < diff.size(); i++) {
+        cout << expectedOutput[i] << endl;
+    }
+    
     for (int i = 0; i < diff.size(); i++) {
         lineToCheck = "[" + diff[i][0] + "]" + diff[i][1];
         EXPECT_EQ(lineToCheck, expectedOutput[i]);
