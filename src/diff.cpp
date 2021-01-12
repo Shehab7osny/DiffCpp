@@ -1,4 +1,4 @@
-#include "../include/diff.h"
+#include "../diff.h"
 
 using namespace std;
 
