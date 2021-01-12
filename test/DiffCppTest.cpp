@@ -132,7 +132,7 @@ TEST(TestCase4, CheckingComplexDiff) {
     char* argvArray[3];
     char** argv = argvArray;
     argvArray[1] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase4/Input1.txt";
-    argvArray[2] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase4/Input1.txt";
+    argvArray[2] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase4/Input2.txt";
 
     string lineToCheck;
 
