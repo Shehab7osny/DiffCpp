@@ -1,6 +1,6 @@
-Keep A
-Keep B
-Keep C
-Keep D
-Delete F
-Insert E
+[Keep]A
+[Keep]B
+[Keep]C
+[Keep]D
+[Delete]F
+[Insert]E

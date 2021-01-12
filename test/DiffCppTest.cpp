@@ -1,10 +1,6 @@
 #include <gtest/gtest.h>
 #include "../include/diff.h"
 
-// To pass virtual function arguments
-char* argvArray[3];
-char** argv = argvArray;
-
 // To Load Expected Results from the specified file
 vector<string> loadExpectedResults(string path)
 {
@@ -36,6 +32,8 @@ vector<string> loadExpectedResults(string path)
 }
 
 TEST(TestCase1, CheckingSimpleDiff) {
+    char* argvArray[3];
+    char** argv = argvArray;
     argvArray[1] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase1/Input1.txt";
     argvArray[2] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase1/Input2.txt";
     
@@ -52,7 +50,7 @@ TEST(TestCase1, CheckingSimpleDiff) {
     vector<vector<string>> diff = session.getDiff(linesFile1, linesFile2);
     
     for (int i = 0; i < diff.size(); i++) {
-        lineToCheck = diff[i][0] + " " + diff[i][1];
+        lineToCheck = "[" + diff[i][0] + "]" + diff[i][1];
         EXPECT_EQ(lineToCheck, expectedOutput[i]);
     }
     
