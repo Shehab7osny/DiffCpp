@@ -1,0 +1,17 @@
+[Keep]#include <iostream>
+[Keep]#include <cmath>
+[Keep]using namespace std;
+[Keep]
+[Keep]int main() {
+[Keep]    double number, squareRoot;
+[Keep]
+[Delete]    number = 25.0;
+[Insert]    number = 40.0;
+[Keep]
+[Keep]    // sqrt() is a library function to calculate the square root
+[Keep]    squareRoot = sqrt(number);
+[Keep]
+[Keep]    cout << "Square root of " << number << " = " << squareRoot;
+[Keep]
+[Keep]    return 0;
+[Keep]}
