@@ -53,12 +53,14 @@ TEST(TestCase1, CheckingSimpleDiff) {
         EXPECT_TRUE(false);
     }
 
-    for (int i = 0; i < diff.size(); i++) {
-        lineToCheck = "[" + diff[i][0] + "]" + diff[i][1];
-        EXPECT_EQ(lineToCheck, expectedOutput[i]);
+    else {
+        for (int i = 0; i < diff.size(); i++) {
+            lineToCheck = "[" + diff[i][0] + "]" + diff[i][1];
+            EXPECT_EQ(lineToCheck, expectedOutput[i]);
+        }
+
+        EXPECT_TRUE(true);
     }
-    
-    EXPECT_TRUE(true);
 }
 
 TEST(TestCase2, ComparePythonCode) {
@@ -72,7 +74,7 @@ TEST(TestCase2, ComparePythonCode) {
     DiffSession session(3, argv);
 
     vector<string> linesFile1 = session.getLinesFromFile(argv[1]),
-        linesFile2 = session.getLinesFromFile(argv[2]);
+                   linesFile2 = session.getLinesFromFile(argv[2]);
 
     vector<string> expectedOutput =
         loadExpectedResults("/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase2/ExpectedResults.txt");
@@ -83,12 +85,14 @@ TEST(TestCase2, ComparePythonCode) {
         EXPECT_TRUE(false);
     }
 
-    for (int i = 0; i < diff.size(); i++) {
-        lineToCheck = "[" + diff[i][0] + "]" + diff[i][1];
-        EXPECT_EQ(lineToCheck, expectedOutput[i]);
-    }
+    else {
+        for (int i = 0; i < diff.size(); i++) {
+            lineToCheck = "[" + diff[i][0] + "]" + diff[i][1];
+            EXPECT_EQ(lineToCheck, expectedOutput[i]);
+        }
 
-    EXPECT_TRUE(true);
+        EXPECT_TRUE(true);
+    }
 }
 
 TEST(TestCase3, CompareCppCode) {
@@ -103,7 +107,7 @@ TEST(TestCase3, CompareCppCode) {
     DiffSession session(4, argv);
 
     vector<string> linesFile1 = session.getLinesFromFile(argv[1]),
-        linesFile2 = session.getLinesFromFile(argv[2]);
+                   linesFile2 = session.getLinesFromFile(argv[2]);
 
     vector<string> expectedOutput =
         loadExpectedResults("/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase3/ExpectedResults.txt");
@@ -114,10 +118,43 @@ TEST(TestCase3, CompareCppCode) {
         EXPECT_TRUE(false);
     }
 
-    for (int i = 0; i < diff.size(); i++) {
-        lineToCheck = "[" + diff[i][0] + "]" + diff[i][1];
-        EXPECT_EQ(lineToCheck, expectedOutput[i]);
+    else {
+        for (int i = 0; i < diff.size(); i++) {
+            lineToCheck = "[" + diff[i][0] + "]" + diff[i][1];
+            EXPECT_EQ(lineToCheck, expectedOutput[i]);
+        }
+
+        EXPECT_TRUE(true);
+    }
+}
+
+TEST(TestCase4, CheckingComplexDiff) {
+    char* argvArray[3];
+    char** argv = argvArray;
+    argvArray[1] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase4/Input1.txt";
+    argvArray[2] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase4/Input1.txt";
+
+    string lineToCheck;
+
+    DiffSession session(3, argv);
+
+    vector<string> linesFile1 = session.getLinesFromFile(argv[1]),
+                   linesFile2 = session.getLinesFromFile(argv[2]);
+
+    vector<string> expectedOutput =
+        loadExpectedResults("/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase4/ExpectedResults.txt");
+
+    vector<vector<string>> diff = session.getDiff(linesFile1, linesFile2);
+
+    if (expectedOutput.size() != diff.size()) {
+        EXPECT_TRUE(false);
     }
 
-    EXPECT_TRUE(true);
+    else {
+        for (int i = 0; i < diff.size(); i++) {
+            lineToCheck = "[" + diff[i][0] + "]" + diff[i][1];
+            EXPECT_EQ(lineToCheck, expectedOutput[i]);
+        }
+        EXPECT_TRUE(true);
+    }
 }
