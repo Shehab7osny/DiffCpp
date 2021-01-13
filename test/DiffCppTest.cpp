@@ -64,14 +64,15 @@ TEST(TestCase1, CheckingSimpleDiff) {
 }
 
 TEST(TestCase2, ComparePythonCode) {
-    char* argvArray[3];
+    char* argvArray[4];
     char** argv = argvArray;
     argvArray[1] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase2/Input1.txt";
     argvArray[2] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase2/Input2.txt";
+    argvArray[3] = (char*)"/W";
 
     string lineToCheck;
 
-    DiffSession session(3, argv);
+    DiffSession session(4, argv);
 
     vector<string> linesFile1 = session.getLinesFromFile(argv[1]),
                    linesFile2 = session.getLinesFromFile(argv[2]);
