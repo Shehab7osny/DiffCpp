@@ -1,4 +1,4 @@
-[Keep]# Python rogram to find the SHA-1 message digest of a file
+[Keep]# Python program to find the SHA-1 message digest of a file
 [Keep]
 [Keep]# importing the hashlib module
 [Keep]import hashlib
