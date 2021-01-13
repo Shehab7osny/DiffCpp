@@ -50,6 +50,7 @@ TEST(TestCase1, CheckingSimpleDiff) {
     vector<vector<string>> diff = session.getDiff(linesFile1, linesFile2);
     
     if (expectedOutput.size() != diff.size()) {
+        cout << "Unequal size of commits list" << endl;
         EXPECT_TRUE(false);
     }
 
@@ -83,6 +84,7 @@ TEST(TestCase2, ComparePythonCode) {
     vector<vector<string>> diff = session.getDiff(linesFile1, linesFile2);
 
     if (expectedOutput.size() != diff.size()) {
+        cout << "Unequal size of commits list" << endl;
         EXPECT_TRUE(false);
     }
 
@@ -116,6 +118,7 @@ TEST(TestCase3, CompareCppCode) {
     vector<vector<string>> diff = session.getDiff(linesFile1, linesFile2);
 
     if (expectedOutput.size() != diff.size()) {
+        cout << "Unequal size of commits list" << endl;
         EXPECT_TRUE(false);
     }
 
@@ -148,6 +151,7 @@ TEST(TestCase4, CheckingComplexDiff) {
     vector<vector<string>> diff = session.getDiff(linesFile1, linesFile2);
 
     if (expectedOutput.size() != diff.size()) {
+        cout << "Unequal size of commits list" << endl;
         EXPECT_TRUE(false);
     }
 
