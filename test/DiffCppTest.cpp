@@ -31,11 +31,11 @@ vector<string> loadExpectedResults(string path)
     return lines;
 }
 
-TEST(TestCase1, CheckingSimpleDiff) {
+TEST(BlockTest1, CheckingSimpleDiff) {
     char* argvArray[3];
     char** argv = argvArray;
-    argvArray[1] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase1/Input1.txt";
-    argvArray[2] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase1/Input2.txt";
+    argvArray[1] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/BlockTests/TestCase1/Input1.txt";
+    argvArray[2] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/BlockTests/TestCase1/Input2.txt";
     
     string lineToCheck;
 
@@ -45,7 +45,7 @@ TEST(TestCase1, CheckingSimpleDiff) {
                    linesFile2 = session.getLinesFromFile(argv[2]);
 
     vector<string> expectedOutput = 
-        loadExpectedResults("/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase1/ExpectedResults.txt");
+        loadExpectedResults("/home/runner/work/DiffCpp/DiffCpp/test/BlockTests/TestCase1/ExpectedResults.txt");
 
     vector<vector<string>> diff = session.getDiff(linesFile1, linesFile2);
     
@@ -64,11 +64,11 @@ TEST(TestCase1, CheckingSimpleDiff) {
     }
 }
 
-TEST(TestCase2, ComparePythonCode) {
+TEST(BlockTest2, ComparePythonCode) {
     char* argvArray[3];
     char** argv = argvArray;
-    argvArray[1] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase2/Input1.txt";
-    argvArray[2] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase2/Input2.txt";
+    argvArray[1] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/BlockTests/TestCase2/Input1.txt";
+    argvArray[2] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/BlockTests/TestCase2/Input2.txt";
 
     string lineToCheck;
 
@@ -78,7 +78,7 @@ TEST(TestCase2, ComparePythonCode) {
                    linesFile2 = session.getLinesFromFile(argv[2]);
 
     vector<string> expectedOutput =
-        loadExpectedResults("/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase2/ExpectedResults.txt");
+        loadExpectedResults("/home/runner/work/DiffCpp/DiffCpp/test/BlockTests/TestCase2/ExpectedResults.txt");
 
     vector<vector<string>> diff = session.getDiff(linesFile1, linesFile2);
 
@@ -97,11 +97,11 @@ TEST(TestCase2, ComparePythonCode) {
     }
 }
 
-TEST(TestCase3, CompareCppCode) {
+TEST(BlockTest3, CompareCppCode) {
     char* argvArray[4];
     char** argv = argvArray;
-    argvArray[1] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase3/Input1.txt";
-    argvArray[2] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase3/Input2.txt";
+    argvArray[1] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/BlockTests/TestCase3/Input1.txt";
+    argvArray[2] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/BlockTests/TestCase3/Input2.txt";
     argvArray[3] = (char*)"/W";
 
     string lineToCheck;
@@ -112,7 +112,7 @@ TEST(TestCase3, CompareCppCode) {
                    linesFile2 = session.getLinesFromFile(argv[2]);
 
     vector<string> expectedOutput =
-        loadExpectedResults("/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase3/ExpectedResults.txt");
+        loadExpectedResults("/home/runner/work/DiffCpp/DiffCpp/test/BlockTests/TestCase3/ExpectedResults.txt");
 
     vector<vector<string>> diff = session.getDiff(linesFile1, linesFile2);
 
@@ -131,11 +131,11 @@ TEST(TestCase3, CompareCppCode) {
     }
 }
 
-TEST(TestCase4, CheckingComplexDiff) {
+TEST(BlockTest4, CheckingComplexDiff) {
     char* argvArray[3];
     char** argv = argvArray;
-    argvArray[1] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase4/Input1.txt";
-    argvArray[2] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase4/Input2.txt";
+    argvArray[1] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/BlockTests/TestCase4/Input1.txt";
+    argvArray[2] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/BlockTests/TestCase4/Input2.txt";
 
     string lineToCheck;
 
@@ -145,7 +145,7 @@ TEST(TestCase4, CheckingComplexDiff) {
                    linesFile2 = session.getLinesFromFile(argv[2]);
 
     vector<string> expectedOutput =
-        loadExpectedResults("/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase4/ExpectedResults.txt");
+        loadExpectedResults("/home/runner/work/DiffCpp/DiffCpp/test/BlockTests/TestCase4/ExpectedResults.txt");
 
     vector<vector<string>> diff = session.getDiff(linesFile1, linesFile2);
 
@@ -163,11 +163,11 @@ TEST(TestCase4, CheckingComplexDiff) {
     }
 }
 
-TEST(TestCase5, CheckingJavaCode) {
+TEST(BlockTest5, CheckingJavaCode) {
     char* argvArray[4];
     char** argv = argvArray;
-    argvArray[1] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase5/Input1.txt";
-    argvArray[2] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase5/Input2.txt";
+    argvArray[1] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/BlockTests/TestCase5/Input1.txt";
+    argvArray[2] = (char*)"/home/runner/work/DiffCpp/DiffCpp/test/BlockTests/TestCase5/Input2.txt";
     argvArray[3] = (char*)"/W";
 
     string lineToCheck;
@@ -178,7 +178,7 @@ TEST(TestCase5, CheckingJavaCode) {
         linesFile2 = session.getLinesFromFile(argv[2]);
 
     vector<string> expectedOutput =
-        loadExpectedResults("/home/runner/work/DiffCpp/DiffCpp/test/TestCases/TestCase5/ExpectedResults.txt");
+        loadExpectedResults("/home/runner/work/DiffCpp/DiffCpp/test/BlockTests/TestCase5/ExpectedResults.txt");
 
     vector<vector<string>> diff = session.getDiff(linesFile1, linesFile2);
 
