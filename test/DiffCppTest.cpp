@@ -252,3 +252,39 @@ TEST(UnitTest1, CheckingLoadingLines)
         EXPECT_TRUE(true);
     }
 }
+
+TEST(UnitTest2, CheckingLoadingLinesComplex)
+{
+    char *argvArray[3];
+    char **argv = argvArray;
+    argvArray[1] = (char *)"/home/runner/work/DiffCpp/DiffCpp/test/UnitTests/TestCase2/Input.txt";
+    argvArray[2] = (char *)"/home/runner/work/DiffCpp/DiffCpp/test/UnitTests/TestCase2/Input.txt";
+
+    DiffSession session(3, argv);
+
+    vector<string> linesFile = session.getLinesFromFile(argv[1]);
+
+    vector<string> expectedOutput =
+        loadExpectedResults("/home/runner/work/DiffCpp/DiffCpp/test/UnitTests/TestCase2/ExpectedResults.txt");
+
+    for (int i = 0; i < linesFile.size(); i++)
+    {
+        cout << linesFile[i] << endl;
+    }
+
+    if (expectedOutput.size() != linesFile.size())
+    {
+        cout << "Unequal size of commits list" << endl;
+        EXPECT_TRUE(false);
+    }
+
+    else
+    {
+        for (int i = 0; i < linesFile.size(); i++)
+        {
+            EXPECT_EQ(linesFile[i], expectedOutput[i]);
+        }
+
+        EXPECT_TRUE(true);
+    }
+}
