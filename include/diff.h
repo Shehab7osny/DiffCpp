@@ -172,15 +172,15 @@ public:
                 if ((1 <= y && y <= linesCount2) && (moveDown))
                 {
                     updateList.push_back({"Insert", linesFile2[y - 1]});
-                    if (this->isSameFie)
-                        this->isSameFie = false;
+                    if (this->isSameFile)
+                        this->isSameFile = false;
                 }
                 // Update the history list with a Deletion
                 else if (1 <= x && x <= linesCount1)
                 {
                     updateList.push_back({"Delete", linesFile1[x - 1]});
-                    if (this->isSameFie)
-                        this->isSameFie = false;
+                    if (this->isSameFile)
+                        this->isSameFile = false;
                 }
 
                 // Handle similar lines in both files
@@ -215,7 +215,7 @@ public:
         bool printNumberLine = true;
 
         // Display the table if there is atleast one update in the file
-        if (!(this->isSameFie))
+        if (!(this->isSameFile))
         {
 
             cout << "File2 -> " << this->fileName2 << endl;
@@ -318,7 +318,7 @@ private:
     bool printLineNumber = false,
          ignoreWhiteSpaces = false,
          displayUpdateOnly = false,
-         isSameFie = true;
+         isSameFile = true;
 
     // Extract file name from file path
     string getFileName(string path)
