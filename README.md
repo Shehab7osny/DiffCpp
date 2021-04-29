@@ -1,5 +1,6 @@
 ![Build Status](https://github.com/Shehab7osny/diffCpp/workflows/Linux%20Build/badge.svg)
 ![coverage](https://github.com/Shehab7osny/diffCpp/workflows/Tests/badge.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # DiffCpp
 This package is used to compare two text files and show the difference
