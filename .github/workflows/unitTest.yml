@@ -11,7 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Install gtest
-      run: mkdir lib && cd lib && git clone https://github.com/google/googletest/ && cmake . && make
+      run: sudo apt-get install libgtest-dev && cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make && sudo cp *.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
     - uses: actions/checkout@v1
+    - name: Build
+      run: cmake .
+    - name: Make
+      run: make 
     - name: Run Test
       run: pwd && ls && /home/runner/work/DiffCpp/DiffCpp/DiffCpp_tst
