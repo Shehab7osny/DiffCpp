@@ -231,11 +231,6 @@ TEST(UnitTest1, CheckingLoadingLines)
     vector<string> expectedOutput =
         loadExpectedResults("/home/runner/work/DiffCpp/DiffCpp/test/UnitTests/TestCase1/ExpectedResults.txt");
 
-    for (int i = 0; i < linesFile.size(); i++)
-    {
-        cout << linesFile[i] << endl;
-    }
-
     if (expectedOutput.size() != linesFile.size())
     {
         cout << "Unequal size of commits list" << endl;
@@ -266,11 +261,6 @@ TEST(UnitTest2, CheckingLoadingLinesComplex)
 
     vector<string> expectedOutput =
         loadExpectedResults("/home/runner/work/DiffCpp/DiffCpp/test/UnitTests/TestCase2/ExpectedResults.txt");
-
-    for (int i = 0; i < linesFile.size(); i++)
-    {
-        cout << linesFile[i] << endl;
-    }
 
     if (expectedOutput.size() != linesFile.size())
     {
