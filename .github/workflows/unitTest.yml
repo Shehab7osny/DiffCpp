@@ -19,5 +19,7 @@ jobs:
       run: make
     - name: PWD
       run: pwd
+    - name: LS
+      run: ls
     - name: Run Test
       run: /home/runner/work/DiffCpp/DiffCpp/test/DiffCpp.test
