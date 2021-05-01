@@ -17,6 +17,7 @@ jobs:
            && ls 
            && ls /home/runner/work/DiffCpp/DiffCpp/lib/
            && cd ../
+           && ls
            && cmake .
            && make
            && /home/runner/work/DiffCpp/DiffCpp/DiffCpp_tst
