@@ -20,4 +20,4 @@ jobs:
     - name: PWD
       run: pwd
     - name: Run Test
-      run: /home/runner/work/DiffCpp/test/DiffCpp.test
+      run: /home/runner/work/DiffCpp/DiffCpp/test/DiffCpp.test
