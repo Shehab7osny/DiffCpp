@@ -1,8 +1,9 @@
-add_executable(
-	DiffCpp
-	diff.cpp
-)
+set(BINARY ${CMAKE_PROJECT_NAME})
 
-add_custom_command(TARGET DiffCpp 
-                   POST_BUILD
-                   COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:DiffCpp> ../)
+file(GLOB_RECURSE SOURCES LIST_DIRECTORIES true *.cpp)
+
+set(SOURCES ${SOURCES})
+
+add_executable(${BINARY} ${SOURCES})
+
+add_library(${BINARY}_lib STATIC ${SOURCES})
