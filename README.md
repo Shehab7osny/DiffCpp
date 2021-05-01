@@ -6,11 +6,20 @@
 This package is used to compare two text files and show the difference
 
 ## Build and Installation
+### Linux
 ```
 git clone https://github.com/Shehab7osny/DiffCpp.git
 cd DiffCpp/
 cmake .
 make
+```
+### Windows
+```
+git clone https://github.com/Shehab7osny/DiffCpp.git
+cd DiffCpp/
+cmake .
+cmake --build .
+cd Debug/
 ```
 
 ## Usage
