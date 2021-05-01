@@ -19,6 +19,8 @@ jobs:
       run: make
     - name: PWD
       run: pwd
+    - name: CD
+      run: cd test
     - name: LS
       run: ls
     - name: Run Test
