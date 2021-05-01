@@ -11,11 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Install gtest
-      run: mkdir lib && cd lib && git clone https://github.com/google/googletest/
+      run: mkdir lib && cd lib && git clone https://github.com/google/googletest/ && cmake . && make
     - uses: actions/checkout@v1
-    - name: Build
-      run: cmake .
-    - name: Make
-      run: make
     - name: Run Test
       run: pwd && ls && /home/runner/work/DiffCpp/DiffCpp/DiffCpp_tst
