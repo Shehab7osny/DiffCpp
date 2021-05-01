@@ -13,9 +13,11 @@ jobs:
     - name: Install gtest manually
       run: sudo apt-get install libgtest-dev && cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make && cd lib && sudo cp *.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
     - uses: actions/checkout@v1
-    - name: configure
-      run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS="-Werror" ..
-    - name: make
-      run: cd build && make
+    - name: Build
+      run: cmake .
+    - name: Make
+      run: make
+    - name: PWD
+      run: pwd
     - name: Run Test
-      run: /home/runner/work/DiffCpp/DiffCpp/test/DiffCpp.test
+      run: /home/runner/work/DiffCpp/test/DiffCpp.test
