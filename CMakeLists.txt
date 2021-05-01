@@ -10,7 +10,7 @@ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
 add_subdirectory(src)
 
-#if (EXISTS "lib/googletest")
+if (EXISTS "lib/googletest")
 	add_subdirectory(test)
 	add_subdirectory(lib/googletest)
-#endif()
+endif()
