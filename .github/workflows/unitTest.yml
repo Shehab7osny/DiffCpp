@@ -16,6 +16,7 @@ jobs:
            && git clone https://github.com/google/googletest/ 
            && ls 
            && ls /home/runner/work/DiffCpp/DiffCpp/lib/
+           && cd ../
            && cmake .
            && make
            && /home/runner/work/DiffCpp/DiffCpp/DiffCpp_tst
