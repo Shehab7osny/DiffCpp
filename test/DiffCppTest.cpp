@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../include/diff.h"
+#include "diff.h"
 
 // Load Expected Results from the specified file
 vector<string> loadExpectedResults(string path)
