@@ -1,4 +1,5 @@
 ![Build Status](https://github.com/Shehab7osny/diffCpp/workflows/Linux%20Build/badge.svg)
+![Build Status](https://github.com/Shehab7osny/diffCpp/workflows/Windows%20Build/badge.svg)
 ![coverage](https://github.com/Shehab7osny/diffCpp/workflows/Tests/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
