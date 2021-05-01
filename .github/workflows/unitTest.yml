@@ -18,4 +18,4 @@ jobs:
     - name: Make
       run: make
     - name: Run Test
-      run: pwd && ls test/ && /home/runner/work/DiffCpp/DiffCpp/DiffCpp_tst
+      run: pwd && ls ../ && /home/runner/work/DiffCpp/DiffCpp/DiffCpp_tst
