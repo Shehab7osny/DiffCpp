@@ -1,10 +1,11 @@
-add_executable(${PROJECT_NAME}.test
-  AllTests.cpp
-  ${PROJECT_NAME}Test.cpp)
-target_link_libraries(${PROJECT_NAME}.test
-  ${PROJECT_NAME} gtest pthread)
-target_compile_definitions(${PROJECT_NAME}.test 
-  PRIVATE TEST_DIR="${CMAKE_CURRENT_LIST_DIR}/test")
+set(BINARY ${CMAKE_PROJECT_NAME}_tst)
 
-install(TARGETS ${PROJECT_NAME}.test
-        DESTINATION "${tool_dest}")
+file(GLOB_RECURSE TEST_SOURCES LIST_DIRECTORIES false *.cpp)
+
+set(SOURCES ${TEST_SOURCES})
+
+add_executable(${BINARY} ${TEST_SOURCES})
+
+add_test(NAME ${BINARY} COMMAND ${BINARY})
+
+target_link_libraries(${BINARY} PUBLIC ${CMAKE_PROJECT_NAME}_lib gtest)
