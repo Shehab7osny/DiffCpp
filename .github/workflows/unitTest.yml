@@ -22,6 +22,6 @@ jobs:
     - name: CD
       run: cd test
     - name: LS
-      run: ls
+      run: ls test/
     - name: Run Test
       run: /home/runner/work/DiffCpp/DiffCpp/test/DiffCpp.test
