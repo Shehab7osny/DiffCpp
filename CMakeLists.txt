@@ -1,11 +1,9 @@
-cmake_minimum_required(VERSION 3.19.1)  	# CMake version check
-project(DiffCpp)	               		# Create project "simple_example"
+cmake_minimum_required(VERSION 3.16)
 
-set(CMAKE_CXX_STANDARD 14)            		# Enable c++14 standard
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_FLGAS "${CMAKE_CXX_FLAGS} ${extra_flags}")
 
-set(tool_dest "bin")
-set(lib_dest "lib")
+project(DiffCpp)
 
+include_directories(include)
 add_subdirectory(src)
-add_subdirectory(test)

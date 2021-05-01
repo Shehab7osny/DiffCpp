@@ -1,8 +1,8 @@
-# Add main.cpp file of project root directory as source file
-set(SOURCE_FILES diff.cpp)
+add_executable(
+	DiffCpp
+	diff.cpp
+)
 
-add_library(${PROJECT_NAME} SHARED
-  ${SOURCE_FILES})
-
-target_link_libraries(${PROJECT_NAME}
-  pthread)
+add_custom_command(TARGET DiffCpp 
+                   POST_BUILD
+                   COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:DiffCpp> ../)
