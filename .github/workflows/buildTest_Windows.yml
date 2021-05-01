@@ -1,5 +1,5 @@
 # Name of the Testing Workflow
-name: Linux Build
+name: Windows Build
 
 # Events at which this workflow is executed
 on:
