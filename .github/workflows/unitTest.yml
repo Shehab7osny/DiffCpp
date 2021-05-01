@@ -16,10 +16,7 @@ jobs:
            && git clone https://github.com/google/googletest/ 
            && ls 
            && ls /home/runner/work/DiffCpp/DiffCpp/lib/
+           && cmake .
+           && make
+           && /home/runner/work/DiffCpp/DiffCpp/DiffCpp_tst
     - uses: actions/checkout@v1
-    - name: Build
-      run: cmake .
-    - name: Make
-      run: make 
-    - name: Run Test
-      run: pwd && ls && /home/runner/work/DiffCpp/DiffCpp/DiffCpp_tst
