@@ -14,13 +14,13 @@ make
 ```
 
 ## Usage
-### Windows
-```
-DiffCpp File_1_Path File_2_Path [/N] [/A] [/W]
-```
 ### Linux
 ```
 ./DiffCpp File_1_Path File_2_Path [/N] [/A] [/W]
+```
+### Windows
+```
+DiffCpp File_1_Path File_2_Path [/N] [/A] [/W]
 ```
 
 Main Arguments
