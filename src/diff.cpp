@@ -230,7 +230,6 @@ string DiffSession::getFileName(string path) {
 }
 
 bool DiffSession::strCompare(string line1, string line2, bool ignoreSpace) {
-
   // To ignore spaces and tabs in the updated files
   if (ignoreSpace) {
     line1.erase(remove_if(line1.begin(), line1.end(), ::isspace), line1.end());
