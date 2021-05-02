@@ -20,4 +20,4 @@ jobs:
     - name: Make
       run: make
     - name: Run Test
-      run: /home/runner/work/DiffCpp/DiffCpp/DiffCpp_tst
+      run: DiffCpp_tst
