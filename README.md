@@ -16,9 +16,9 @@ make
 ```
 ### Windows
 ```
-git clone https://github.com/Shehab7osny/DiffCpp.git
-cd DiffCpp/
-cmake .
+mkdir build
+cd build
+cmake ..
 cmake --build .
 cd Debug/
 ```
