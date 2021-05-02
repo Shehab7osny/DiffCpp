@@ -12,8 +12,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Install gtest
-      run: mkdir /home/runner/work/DiffCpp/DiffCpp/lib 
-           && cd /home/runner/work/DiffCpp/DiffCpp/lib 
+      run: mkdir lib 
+           && cd lib 
            && git clone https://github.com/google/googletest/ 
     - name: Build
       run: cmake .
