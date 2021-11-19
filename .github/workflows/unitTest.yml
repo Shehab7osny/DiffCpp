@@ -35,7 +35,7 @@ jobs:
            sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
 
     - name: Build
-      run: cmake .
+      run: cmake -DBUILD_TESTS=ON .
 
     - name: Make
       run: make
