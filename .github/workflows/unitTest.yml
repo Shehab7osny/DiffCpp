@@ -32,4 +32,4 @@ jobs:
       run: make
       
     - name: Run Test
-      run: ls
+      run: ls && pwd
