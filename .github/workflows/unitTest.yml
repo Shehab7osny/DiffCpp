@@ -19,7 +19,7 @@ jobs:
         cache-name: cache-gtest-package
       with:
         path: |
-          ~/.gtest
+          sudo /usr/src/gtest
         key: ${{ runner.os }}-build-${{ env.cache-name }}
 
     - name: Clone GoogleTest repository
@@ -27,13 +27,13 @@ jobs:
       run: sudo apt-get install libgtest-dev &&
            cd /usr/src/gtest &&
            sudo cmake CMakeLists.txt &&
-           sudo make &&
+           sudo make
+
+    - name: get libraries
+      run: cd /usr/src/gtest &&
            sudo cp ./lib/libgtest*.a /usr/lib &&
            sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a &&
            sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
-
-    - name: get libraries
-      run: cd ~/.gtest/ && ls
 
     - name: Build
       run: cmake -DBUILD_TESTS=ON .
