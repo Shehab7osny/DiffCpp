@@ -32,7 +32,7 @@ jobs:
            sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
 
     - name: Build
-      run: cmake .
+      run: cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Werror" .
 
     - name: Make
       run: make
