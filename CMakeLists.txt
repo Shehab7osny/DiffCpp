@@ -12,5 +12,6 @@ add_subdirectory(src)
 
 if (BUILD_TESTS)
 	add_subdirectory(test)
+endif()
 # 	add_subdirectory(googletest)
 # endif()
