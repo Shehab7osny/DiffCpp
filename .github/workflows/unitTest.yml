@@ -17,7 +17,7 @@ jobs:
       env:
         cache-name: cache-gtest-package
       with:
-        path: ~/.gtest
+        path: ~/lib
         key: ${{ runner.os }}-build-${{ env.cache-name }}
 
     - name: Clone GoogleTest repository
