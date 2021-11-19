@@ -23,13 +23,14 @@ jobs:
         key: ${{ runner.os }}-build-${{ env.cache-name }}
 
     - name: Clone GoogleTest repository
-      if: steps.cached-gtest.outputs.cache-hit != 'true'
+      # if: steps.cached-gtest.outputs.cache-hit != 'true'
       run: sudo apt-get install libgtest-dev &&
            cd /usr/src/gtest &&
            sudo cmake CMakeLists.txt &&
            sudo make
 
     - name: get libraries
+      if: steps.cached-gtest.outputs.cache-hit != 'true'
       run: cd /usr/src/gtest &&
            sudo cp ./lib/libgtest*.a /usr/lib &&
            sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a &&
