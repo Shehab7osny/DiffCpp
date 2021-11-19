@@ -21,8 +21,8 @@ jobs:
         key: ${{ runner.os }}-build-${{ env.cache-name }}
 
     - name: Clone GoogleTest repository
-      run: pwd
-      run: git clone https://github.com/google/googletest/
+      run: pwd &&
+           git clone https://github.com/google/googletest/
 
     - name: Build
       run: cmake .
