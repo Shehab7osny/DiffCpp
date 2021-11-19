@@ -31,7 +31,7 @@ jobs:
            sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a &&
            sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
 
-    - name: Build
+    - name: Build gtest
       run: cmake .
 
     - name: Make
