@@ -18,7 +18,7 @@ jobs:
       env:
         cache-name: cache-gtest-package
       with:
-        path: /usr/src/gtest
+        path: sudo /usr/src/gtest
         key: ${{ runner.os }}-build-${{ env.cache-name }}
 
     - name: Clone GoogleTest repository
