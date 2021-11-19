@@ -19,7 +19,6 @@ jobs:
         cache-name: cache-gtest-package
       with:
         path: |
-          sudo /usr/src/gtest
           sudo /usr/lib/libgtest.a
           sudo /usr/lib/libgtest_main.a
         key: ${{ runner.os }}-build-${{ env.cache-name }}
