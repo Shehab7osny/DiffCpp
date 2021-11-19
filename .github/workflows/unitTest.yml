@@ -19,7 +19,7 @@ jobs:
       with:
         path: .
         key: ${{ runner.os }}-build-${{ env.cache-name }}
-      run: git clone https://github.com/google/googletest/
+        run: git clone https://github.com/google/googletest/
 
     - name: Build
       run: cmake .
