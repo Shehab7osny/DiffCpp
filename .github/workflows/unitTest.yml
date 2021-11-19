@@ -17,12 +17,11 @@ jobs:
       env:
         cache-name: cache-gtest-package
       with:
-        path: ~/lib
+        path: ~/.gtest
         key: ${{ runner.os }}-build-${{ env.cache-name }}
 
     - name: Clone GoogleTest repository
-      run: pwd &&
-           git clone https://github.com/google/googletest/
+      run: git clone https://github.com/google/googletest/
 
     - name: Build
       run: cmake .
