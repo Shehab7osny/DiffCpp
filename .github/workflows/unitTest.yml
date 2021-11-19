@@ -13,13 +13,17 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Cache GoogleTest package
+      id: cached-gtest
       uses: actions/cache@v2
       env:
         cache-name: cache-gtest-package
       with:
-        path: .
+        path: ~/.gtest
         key: ${{ runner.os }}-build-${{ env.cache-name }}
-        run: git clone https://github.com/google/googletest/
+
+    - name: Clone GoogleTest repository
+      if: steps.cached-gtest.outputs.cache-hit != 'true'
+      run: git clone https://github.com/google/googletest/
 
     - name: Build
       run: cmake .
