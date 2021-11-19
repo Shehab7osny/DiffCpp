@@ -10,14 +10,24 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Install gtest
-      run: mkdir lib 
-           && cd lib 
-           && git clone https://github.com/google/googletest/ 
+    - uses: actions/checkout@v2
+
+    - name: Cache GoogleTest package
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-gtest-package
+      with:
+        path: ~/.gtest
+        key: ${{ runner.os }}-build-${{ env.cache-name }}
+
+    - name: Clone GoogleTest repository
+      run: git clone https://github.com/google/googletest/
+
     - name: Build
       run: cmake .
+
     - name: Make
       run: make
+      
     - name: Run Test
       run: ./DiffCpp_tst
