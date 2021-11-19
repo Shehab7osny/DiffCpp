@@ -22,7 +22,7 @@ jobs:
         key: ${{ runner.os }}-build-${{ env.cache-name }}
 
     - name: Clone GoogleTest repository
-      if: steps.cached-gtest.outputs.cache-hit != 'true'
+      # if: steps.cached-gtest.outputs.cache-hit != 'true'
       run: git clone https://github.com/google/googletest/
 
     - name: Build
