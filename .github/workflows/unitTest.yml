@@ -26,8 +26,7 @@ jobs:
       run: sudo apt-get install libgtest-dev &&
            cd /usr/src/gtest &&
            sudo cmake CMakeLists.txt &&
-           sudo make &&
-           ls
+           sudo make
 
     - name: Build
       run: cmake -DBUILD_TESTS=ON .
