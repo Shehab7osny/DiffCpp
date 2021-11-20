@@ -12,7 +12,8 @@ jobs:
     name: Windows Build
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: "Checkout Repository"
+      uses: actions/checkout@v2
     - name: Build
       run: pwd && cmake .
     - name: Make
@@ -22,7 +23,8 @@ jobs:
     name: Linux Build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: "Checkout Repository"
+      uses: actions/checkout@v2
     - name: Build
       run: pwd && cmake .
     - name: Make
@@ -35,7 +37,8 @@ jobs:
       - build-linux
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: "Checkout Repository"
+      uses: actions/checkout@v2
 
     - name: Cache GoogleTest Package
       id: cached-gtest
@@ -57,5 +60,5 @@ jobs:
     - name: Make
       run: make
       
-    - name: Run Test
+    - name: Run Unit Tests
       run: ./DiffCpp_tst
