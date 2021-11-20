@@ -10,44 +10,44 @@
  *Myers Algorithm    http://www.xmailserver.org/diff2.pdf
  ****************************************************************************/
 
-#include <tuple>
-#include <string>
-#include <vector>
+#include <algorithm>
 #include <fstream>
 #include <iostream>
-#include <algorithm>
+#include <string>
+#include <tuple>
 #include <unordered_map>
+#include <vector>
 
 using namespace std;
 
-static const char *Starting_MSG = "+-------------------------------------------------+\n"
-                                  "|        ____  _  __  __  ____                    |\n"
-                                  "|       |  _ \\(_)/ _|/ _|/ ___|_ __  _ __         |\n"
-                                  "|       | | | | | |_| |_| |   | '_ \\| '_ \\        |\n"
-                                  "|       | |_| | |  _|  _| |___| |_) | |_) |       |\n"
-                                  "|       |____/|_|_| |_|  \\____| .__/| .__/        |\n"
-                                  "|                             |_|   |_|           |\n"
-                                  "|                                                 |\n"
-                                  "|       Version 1.0                               |\n"
-                                  "+-------------------------------------------------+\n"
-                                  "| DiffCpp  File1_Path  File2_Path  [/N] [/W] [/A] |\n"
-                                  "|                                                 |\n"
-                                  "| /N -> Display the line numbers                  |\n"
-                                  "| /W -> Ignore Whitespaces                        |\n"
-                                  "| /A -> Display the changes only                  |\n"
-                                  "+-------------------------------------------------+\n";
+static const char *Starting_MSG =
+    "+-------------------------------------------------+\n"
+    "|        ____  _  __  __  ____                    |\n"
+    "|       |  _ \\(_)/ _|/ _|/ ___|_ __  _ __         |\n"
+    "|       | | | | | |_| |_| |   | '_ \\| '_ \\        |\n"
+    "|       | |_| | |  _|  _| |___| |_) | |_) |       |\n"
+    "|       |____/|_|_| |_|  \\____| .__/| .__/        |\n"
+    "|                             |_|   |_|           |\n"
+    "|                                                 |\n"
+    "|       Version 1.0                               |\n"
+    "+-------------------------------------------------+\n"
+    "| DiffCpp  File1_Path  File2_Path  [/N] [/W] [/A] |\n"
+    "|                                                 |\n"
+    "| /N -> Display the line numbers                  |\n"
+    "| /W -> Ignore Whitespaces                        |\n"
+    "| /A -> Display the changes only                  |\n"
+    "+-------------------------------------------------+\n";
 
 /**
  * DiffSession
- * This class provides the user a single session  (as in Windows FC diff tool) to
- * get the updates in two file versions. The user must pass atleast two arguments
- * in addition to the exe call. If any of these arguments are missing the program
- * will terminate. However, the user may add up to three additional arguments for 
- * additional diff options indicated in the class constructor. This class compares
- * the two text files based on Myers' Algorithm of diff.
+ * This class provides the user a single session  (as in Windows FC diff tool)
+ * to get the updates in two file versions. The user must pass atleast two
+ * arguments in addition to the exe call. If any of these arguments are missing
+ * the program will terminate. However, the user may add up to three additional
+ * arguments for additional diff options indicated in the class constructor.
+ * This class compares the two text files based on Myers' Algorithm of diff.
  */
-class DiffSession
-{
+class DiffSession {
 public:
   // Start a single session for files comparison
   DiffSession(int noOfArgs, char **argsList);
@@ -59,17 +59,16 @@ public:
   vector<string> getLinesFromFile(string path);
 
   // An implementation of Myers Diff algorithm
-  vector<vector<string>> getDiff(vector<string> linesFile1, vector<string> linesFile2);
+  vector<vector<string>> getDiff(vector<string> linesFile1,
+                                 vector<string> linesFile2);
 
   // Display the diff table including all commits
   void printTable(vector<vector<string>> result);
 
 private:
   string filePath1, filePath2, fileName1, fileName2;
-  bool printLineNumber = false,
-       ignoreWhiteSpaces = false,
-       displayUpdateOnly = false,
-       isSameFile = true;
+  bool printLineNumber = false, ignoreWhiteSpaces = false,
+       displayUpdateOnly = false, isSameFile = true;
 
   // Extract file name from file path
   string getFileName(string path);
