@@ -8,4 +8,4 @@ add_executable(${BINARY} ${TEST_SOURCES})
 
 add_test(NAME ${BINARY} COMMAND ${BINARY})
 
-target_link_libraries(${BINARY} PUBLIC /usr/lib/libgtest.a /usr/lib/libgtest_main.a ${CMAKE_PROJECT_NAME}_lib gtest pthread)
+target_link_libraries(${BINARY} PUBLIC /usr/src/gtest/lib/libgtest.a /usr/src/gtest/lib/libgtest_main.a ${CMAKE_PROJECT_NAME}_lib gtest pthread)
