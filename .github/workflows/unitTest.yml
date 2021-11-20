@@ -21,13 +21,13 @@ jobs:
         path: ~/.gtest
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
 
-    - name: Install GoogleTest
-      if: steps.cached-gtest.outputs.cache-hit != 'true'
-      run: sudo apt-get install libgtest-dev
+    # - name: Install GoogleTest
+    #   if: steps.cached-gtest.outputs.cache-hit != 'true'
+    #   run: sudo apt-get install libgtest-dev
 
     - name: Check cached dirctory
-      run: sudo cp -a ~/.gtest/ /usr/src/googletest/googletest/ &&
-           cd /usr/src/googletest/googletest &&
+      run: sudo cp -a ~/.gtest/ /usr/src/gtest/ &&
+           cd /usr/src/gtest &&
            sudo cmake CMakeLists.txt &&
            sudo make
 
