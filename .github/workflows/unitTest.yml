@@ -30,7 +30,7 @@ jobs:
            sudo cp ./lib/libgtest*.a /usr/lib
 
     - name: Check cached dirctory
-      run: sudo cp ./lib/libgtest*.a /usr/lib &&
+      run: sudo cp /usr/src/gtest/lib/libgtest*.a /usr/lib &&
            cd /usr/lib &&
            ls
 
