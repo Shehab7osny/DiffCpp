@@ -26,8 +26,7 @@ jobs:
       run: sudo apt-get install libgtest-dev
 
     - name: Check cached dirctory
-      run: cd /usr/src/gtest/ &&
-           sudo cp -a ~/.gtest/ /usr/src/gtest/ &&
+      run: sudo cp -a ~/.gtest/ /usr/src/gtest/ &&
            cd /usr/src/gtest/ &&
            ls
 
