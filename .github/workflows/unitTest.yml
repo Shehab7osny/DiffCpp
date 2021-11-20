@@ -28,7 +28,7 @@ jobs:
            sudo cmake CMakeLists.txt &&
            sudo make
 
-    - name: Check cached data
+    - name: Check cached dirctory
       run: cd /usr/src/gtest && ls
 
     - name: Build
