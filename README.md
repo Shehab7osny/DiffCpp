@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # DiffCpp
-This package is used to compare two text files and show the difference
+This package is used to compare two files line by line and show the differences.
 
 ## Build and Installation
 ### Linux
