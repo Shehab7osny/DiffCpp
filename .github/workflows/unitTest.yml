@@ -26,7 +26,7 @@ jobs:
       run: sudo apt-get install libgtest-dev
 
     - name: Check cached dirctory
-      run: sudo rm -r /usr/src/gtest/ &&
+      run: sudo [ ! -d "/usr/src/gtest/" ] && echo "Directory /usr/src/gtest/ DOES NOT exists." &&
            sudo cp -a ~/.gtest/ /usr/src/gtest/ &&
            cd /usr/src/gtest/ &&
            ls
