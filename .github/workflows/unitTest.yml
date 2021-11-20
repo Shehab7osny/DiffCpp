@@ -26,7 +26,7 @@ jobs:
       run: sudo apt-get install libgtest-dev &&
            cd /usr/src/gtest &&
            sudo cmake CMakeLists.txt &&
-           sudo make
+           sudo make &&
            cp -a . ~/.gtest
 
     - name: Check cached directory
