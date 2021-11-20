@@ -16,7 +16,7 @@ jobs:
       id: cached-gtest
       uses: actions/cache@v2
       env:
-        cache-name: cache-gtest-package
+        cache-name: cache-gtest-repo
       with:
         path: googletest
         key: ${{ runner.os }}-build-${{ env.cache-name }}
