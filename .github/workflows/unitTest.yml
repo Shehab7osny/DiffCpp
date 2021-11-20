@@ -25,7 +25,7 @@ jobs:
       # if: steps.cached-gtest.outputs.cache-hit != 'true'
       run: sudo apt-get install libgtest-dev &&
            mkdir googleTest &&
-           cd googleTest
+           cd googleTest &&
            cp -a /usr/src/gtest . &&
            sudo cmake CMakeLists.txt &&
            sudo make
