@@ -31,7 +31,7 @@ jobs:
       run: make
 
   clang-format-check:
-    name: Code Formatting
+    name: Codebase Formatting
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
