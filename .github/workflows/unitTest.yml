@@ -25,10 +25,9 @@ jobs:
       if: steps.cached-gtest.outputs.cache-hit != 'true'
       run: sudo apt-get install libgtest-dev
 
-    # - name: Check cached data
-    #   run: sudo cp -a ~/.gtest/ /usr/src/gtest/ &&
-    #        cd /usr/src/gtest/ &&
-    #        ls
+    - name: Check cached data
+      run: cd /usr/src/gtest/ &&
+           ls
 
     - name: Build
       run: cmake -DBUILD_TESTS=ON .
