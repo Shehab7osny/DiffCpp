@@ -27,7 +27,7 @@ jobs:
 
     - name: Check cached dirctory
       run: sudo cp -a ~/.gtest/ /usr/src/gtest/ &&
-           cd /usr/src/gtest &&
+           cd /usr/src/gtest && ls &&
            sudo cmake CMakeLists.txt &&
            sudo make
 
