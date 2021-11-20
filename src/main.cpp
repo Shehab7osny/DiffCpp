@@ -1,11 +1,13 @@
 #include "diff.h"
 
-int main(int argc, char ** argv) {
+int main(int argc, char **argv)
+{
 
   cout << Starting_MSG << endl;
 
   // Check for the minimum number of arguments required
-  if (argc < 3) {
+  if (argc < 3)
+  {
     cout << "Insufficient number of file specifications" << endl;
     return 0;
   }

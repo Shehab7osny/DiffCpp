@@ -31,7 +31,7 @@ jobs:
       run: make
 
   clang-format-check:
-    name: Clang Format
+    name: Clean Code
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository

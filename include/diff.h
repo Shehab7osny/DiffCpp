@@ -20,24 +20,23 @@
 
 using namespace std;
 
-static
-const char* Starting_MSG =
-  "+-------------------------------------------------+\n"
-"|        ____  _  __  __  ____                    |\n"
-"|       |  _ \\(_)/ _|/ _|/ ___|_ __  _ __         |\n"
-"|       | | | | | |_| |_| |   | '_ \\| '_ \\        |\n"
-"|       | |_| | |  _|  _| |___| |_) | |_) |       |\n"
-"|       |____/|_|_| |_|  \\____| .__/| .__/        |\n"
-"|                             |_|   |_|           |\n"
-"|                                                 |\n"
-"|       Version 1.0                               |\n"
-"+-------------------------------------------------+\n"
-"| DiffCpp  File1_Path  File2_Path  [/N] [/W] [/A] |\n"
-"|                                                 |\n"
-"| /N -> Display the line numbers                  |\n"
-"| /W -> Ignore Whitespaces                        |\n"
-"| /A -> Display the changes only                  |\n"
-"+-------------------------------------------------+\n";
+static const char *Starting_MSG =
+    "+-------------------------------------------------+\n"
+    "|        ____  _  __  __  ____                    |\n"
+    "|       |  _ \\(_)/ _|/ _|/ ___|_ __  _ __         |\n"
+    "|       | | | | | |_| |_| |   | '_ \\| '_ \\        |\n"
+    "|       | |_| | |  _|  _| |___| |_) | |_) |       |\n"
+    "|       |____/|_|_| |_|  \\____| .__/| .__/        |\n"
+    "|                             |_|   |_|           |\n"
+    "|                                                 |\n"
+    "|       Version 1.0                               |\n"
+    "+-------------------------------------------------+\n"
+    "| DiffCpp  File1_Path  File2_Path  [/N] [/W] [/A] |\n"
+    "|                                                 |\n"
+    "| /N -> Display the line numbers                  |\n"
+    "| /W -> Ignore Whitespaces                        |\n"
+    "| /A -> Display the changes only                  |\n"
+    "+-------------------------------------------------+\n";
 
 /**
  * DiffSession
@@ -48,29 +47,30 @@ const char* Starting_MSG =
  * additional diff options indicated in the class constructor. This class compares
  * the two text files based on Myers' Algorithm of diff.
  */
-class DiffSession {
-  public:
+class DiffSession
+{
+public:
   // Start a single session for files comparison
-  DiffSession(int noOfArgs, char ** argsList);
+  DiffSession(int noOfArgs, char **argsList);
 
   // Get the diff and Display it for the running session
   void showDiff();
 
   // Load the input file into a vector of separate lines
-  vector < string > getLinesFromFile(string path);
+  vector<string> getLinesFromFile(string path);
 
   // An implementation of Myers Diff algorithm
-  vector < vector < string >> getDiff(vector < string > linesFile1, vector < string > linesFile2);
+  vector<vector<string>> getDiff(vector<string> linesFile1, vector<string> linesFile2);
 
   // Display the diff table including all commits
-  void printTable(vector < vector < string >> result);
+  void printTable(vector<vector<string>> result);
 
-  private:
-    string filePath1, filePath2, fileName1, fileName2;
-  bool printLineNumber   = false,
+private:
+  string filePath1, filePath2, fileName1, fileName2;
+  bool printLineNumber = false,
        ignoreWhiteSpaces = false,
        displayUpdateOnly = false,
-       isSameFile        = true;
+       isSameFile = true;
 
   // Extract file name from file path
   string getFileName(string path);
