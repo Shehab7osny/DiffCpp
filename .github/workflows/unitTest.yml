@@ -18,7 +18,7 @@ jobs:
       env:
         cache-name: cache-gtest-package
       with:
-        path: sudo /usr/src/gtest
+        path: ~/.gtest
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
 
     - name: Install GoogleTest
@@ -29,7 +29,7 @@ jobs:
            sudo make
 
     - name: Check cached dirctory
-      run: cd /usr/src/gtest && ls
+      run: cd ~/.gtest && ls
 
     - name: Build
       run: cmake -DBUILD_TESTS=ON .
