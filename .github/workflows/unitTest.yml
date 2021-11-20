@@ -26,7 +26,7 @@ jobs:
       run: sudo apt-get install libgtest-dev &&
            cd /usr/src/gtest &&
            sudo cmake CMakeLists.txt &&
-           sudo make
+           sudo make &&
            sudo cp ./lib/libgtest*.a /usr/lib
 
     - name: Check cached dirctory
