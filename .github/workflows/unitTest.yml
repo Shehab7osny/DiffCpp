@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  build:
+  build-windows:
     name: Windows Build
     runs-on: windows-latest
     steps:
@@ -21,7 +21,7 @@ jobs:
   release:
     name: Unit Tests
     needs:
-      - build
+      - build-windows
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
