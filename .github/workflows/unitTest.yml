@@ -24,8 +24,10 @@ jobs:
     - name: Install GoogleTest
       # if: steps.cached-gtest.outputs.cache-hit != 'true'
       run: sudo apt-get install libgtest-dev &&
-           cp -r /usr/src/gtest . &&
-           cd gtest && ls &&
+           mkdir googleTest && pwd &&
+           cd googleTest && pwd &&
+           cp -a /usr/src/gtest . &&
+           ls && pwd &&
            sudo cmake CMakeLists.txt &&
            sudo make
 
