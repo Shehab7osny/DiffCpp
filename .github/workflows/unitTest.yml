@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Cache GoogleTest package
+    - name: Cache GoogleTest Package
       id: cached-gtest
       uses: actions/cache@v2
       env:
