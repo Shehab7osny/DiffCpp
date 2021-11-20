@@ -18,7 +18,7 @@ jobs:
       env:
         cache-name: cache-gtest-package
       with:
-        path: sudo /usr/src/gtest
+        path: /usr/src/gtest
         key: ${{ runner.os }}-build-${{ env.cache-name }}
 
     - name: Install GoogleTest
