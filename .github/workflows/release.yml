@@ -39,7 +39,7 @@ jobs:
     - name: Check Codebase Format
       uses: RafikFarhad/clang-format-github-action@v1.0.1
       with:
-        sources: "src/**/*.h,src/**/*.c,include/**/*.h,test/**/*.c"
+        sources: "src/*.cpp,include/*.h,test/*.cpp"
 
   release:
     name: Unit Tests
