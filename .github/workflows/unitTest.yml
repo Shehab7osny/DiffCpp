@@ -28,7 +28,7 @@ jobs:
            sudo cmake CMakeLists.txt &&
            sudo make &&
            sudo rm /usr/src/gtest/lib/libgtest.a &&
-           sudo rm /usr/src/gtest/lib/libgtest_main.a &&
+           sudo rm /usr/src/gtest/lib/libgtest_main.a
 
     - name: Check cached dirctory
       run: sudo cp -a ~/.gtest/ /usr/src/gtest/ &&
