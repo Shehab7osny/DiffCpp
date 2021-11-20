@@ -1,6 +1,6 @@
 #include "diff.h"
 
-DiffSession::DiffSession(int noOfArgs, char** argsList)
+DiffSession::DiffSession(int noOfArgs, char **argsList)
 {
     this->filePath1 = argsList[1]; // Old version file
     this->filePath2 = argsList[2]; // New version file
