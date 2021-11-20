@@ -27,7 +27,7 @@ jobs:
            mkdir googleTest && pwd &&
            cd googleTest && pwd &&
            cp -a /usr/src/gtest . &&
-           ls && pwd &&
+           cd gtest && ls && pwd &&
            sudo cmake CMakeLists.txt &&
            sudo make
 
