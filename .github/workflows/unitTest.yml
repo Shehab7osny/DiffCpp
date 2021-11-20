@@ -23,12 +23,7 @@ jobs:
 
     - name: Install GoogleTest
       # if: steps.cached-gtest.outputs.cache-hit != 'true'
-      run: sudo apt-get install libgtest-dev &&
-           cd /usr/src/gtest &&
-           sudo cmake CMakeLists.txt &&
-           sudo make &&
-           sudo rm /usr/src/gtest/lib/libgtest.a &&
-           sudo rm /usr/src/gtest/lib/libgtest_main.a
+      run: sudo apt-get install libgtest-dev
 
     - name: Check cached dirctory
       run: sudo cp -a ~/.gtest/ /usr/src/gtest/ &&
