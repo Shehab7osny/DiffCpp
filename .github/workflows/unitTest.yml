@@ -16,7 +16,7 @@ jobs:
       id: cached-gtest
       uses: actions/cache@v2
       env:
-        cache-name: cache-gtest-package
+        cache-name: cache-gtest-package1
       with:
         path: ~/.gtest
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
