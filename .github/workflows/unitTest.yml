@@ -29,7 +29,9 @@ jobs:
            sudo make
 
     - name: Check cached dirctory
-      run: cd ~/.gtest && ls
+      run: cp -a ~/.gtest/ /usr/src/gtest/ &&
+           cd /usr/src/gtest/ &&
+           ls
 
     - name: Build
       run: cmake -DBUILD_TESTS=ON .
