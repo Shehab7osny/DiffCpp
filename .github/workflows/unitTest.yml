@@ -16,7 +16,7 @@ jobs:
       id: cached-gtest
       uses: actions/cache@v2
       env:
-        cache-name: cache-gtest-package-new2
+        cache-name: cache-gtest-package-new3
       with:
         path: ~/.gtest
         key: ${{ runner.os }}-build-${{ env.cache-name }}
@@ -24,12 +24,11 @@ jobs:
     - name: Install GoogleTest package
       if: steps.cached-gtest.outputs.cache-hit != 'true'
       run: sudo apt-get install libgtest-dev &&
-           sudo cp -a /usr/src/gtest/ ~/.gtest/
+           mkdir googletest &&
+           sudo cp -a /usr/src/gtest/ ./googletest
 
     - name: Check cached data
-      run: sudo cp -a ~/.gtest/ /usr/src/gtest/ && 
-           cd /usr/src/gtest/ &&
-           ls
+      run: ls
 
     - name: Build Try
       run: cmake -DBUILD_TESTS=ON .
