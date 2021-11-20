@@ -16,18 +16,15 @@ jobs:
       id: cached-gtest
       uses: actions/cache@v2
       env:
-        cache-name: cache-gtest-package-new5
+        cache-name: cache-gtest-package
       with:
         path: googletest
         key: ${{ runner.os }}-build-${{ env.cache-name }}
 
-    - name: Install GoogleTest package
+    - name: Install GoogleTest
       if: steps.cached-gtest.outputs.cache-hit != 'true'
       run: mkdir googletest &&
            git clone https://github.com/google/googletest.git googletest
-
-    - name: Check cached data
-      run: ls
 
     - name: Build
       run: cmake -DBUILD_TESTS=ON .
