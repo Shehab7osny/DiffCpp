@@ -8,6 +8,17 @@ on:
 
 jobs:
 
+  clang-format-check:
+    name: Codebase Formatting
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Check Codebase Format
+      uses: RafikFarhad/clang-format-github-action@v1.0.1
+      with:
+        sources: "src/*.cpp,include/*.h,test/*.cpp"
+
   build-windows:
     name: Windows Build
     runs-on: windows-latest
@@ -29,17 +40,6 @@ jobs:
       run: pwd && cmake .
     - name: Make
       run: make
-
-  clang-format-check:
-    name: Codebase Formatting
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-    - name: Check Codebase Format
-      uses: RafikFarhad/clang-format-github-action@v1.0.1
-      with:
-        sources: "src/*.cpp,include/*.h,test/*.cpp"
 
   release:
     name: Unit Tests
