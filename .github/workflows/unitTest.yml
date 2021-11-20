@@ -18,10 +18,21 @@ jobs:
     - name: Make
       run: cmake --build .
 
+  build-linux:
+    name: Linux Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build
+      run: pwd && cmake .
+    - name: Make
+      run: make
+
   release:
     name: Unit Tests
     needs:
       - build-windows
+      - build-linux
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
