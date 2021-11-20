@@ -12,7 +12,7 @@ jobs:
     name: Windows Build
     runs-on: windows-latest
     steps:
-    - name: "Checkout Repository"
+    - name: Checkout Repository
       uses: actions/checkout@v2
     - name: Build
       run: pwd && cmake .
@@ -23,12 +23,21 @@ jobs:
     name: Linux Build
     runs-on: ubuntu-latest
     steps:
-    - name: "Checkout Repository"
+    - name: Checkout Repository
       uses: actions/checkout@v2
     - name: Build
       run: pwd && cmake .
     - name: Make
       run: make
+
+  clang-format-check:
+    name: Clang Format
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Check Codebase Format
+      uses: HorstBaerbel/action-clang-format@1.5
 
   release:
     name: Unit Tests
@@ -37,7 +46,7 @@ jobs:
       - build-linux
     runs-on: ubuntu-latest
     steps:
-    - name: "Checkout Repository"
+    - name: Checkout Repository
       uses: actions/checkout@v2
 
     - name: Cache GoogleTest Package
