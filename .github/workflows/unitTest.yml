@@ -16,17 +16,19 @@ jobs:
       id: cached-gtest
       uses: actions/cache@v2
       env:
-        cache-name: cache-gtest-package-new1
+        cache-name: cache-gtest-package-new2
       with:
-        path: sudo /usr/src/gtest/
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        path: ~/.gtest
+        key: ${{ runner.os }}-build-${{ env.cache-name }}
 
     - name: Install GoogleTest package
       if: steps.cached-gtest.outputs.cache-hit != 'true'
-      run: sudo apt-get install libgtest-dev
+      run: sudo apt-get install libgtest-dev &&
+           sudo cp -a /usr/src/gtest/ ~/.gtest/
 
     - name: Check cached data
-      run: cd /usr/src/gtest/ &&
+      run: sudo cp -a ~/.gtest/ /usr/src/gtest/ && 
+           cd /usr/src/gtest/ &&
            ls
 
     - name: Build
