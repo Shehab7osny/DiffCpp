@@ -16,9 +16,9 @@ jobs:
       id: cached-gtest
       uses: actions/cache@v2
       env:
-        cache-name: cache-gtest-package-new4
+        cache-name: cache-gtest-package-new5
       with:
-        path: ~/.gtest
+        path: googletest
         key: ${{ runner.os }}-build-${{ env.cache-name }}
 
     - name: Install GoogleTest package
