@@ -48,7 +48,10 @@ static const char *Starting_MSG = "+--------------------------------------------
  */
 class DiffSession
 {
-public: // Start a single session for files comparison DiffSession(int noOfArgs, char **argsList);
+public:
+  // Start a single session for files comparison
+  DiffSession(int noOfArgs, char **argsList);
+
   // Get the diff and Display it for the running session
   void showDiff();
 
