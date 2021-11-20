@@ -26,6 +26,7 @@ jobs:
       # if: steps.cached-gtest.outputs.cache-hit != 'true'
       run: sudo apt-get install libgtest-dev &&
            cd /usr/src/gtest &&
+           ls &&
            sudo cmake CMakeLists.txt &&
            sudo make
 
