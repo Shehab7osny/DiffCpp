@@ -22,7 +22,7 @@ jobs:
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
 
     - name: Install GoogleTest
-      # if: steps.cached-gtest.outputs.cache-hit != 'true'
+      if: steps.cached-gtest.outputs.cache-hit != 'true'
       run: sudo apt-get install libgtest-dev &&
            cd /usr/src/gtest &&
            sudo cmake CMakeLists.txt &&
