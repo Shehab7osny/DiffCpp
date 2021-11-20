@@ -31,7 +31,7 @@ jobs:
 
     - name: Check cached dirctory
       run: sudo cp -a ~/.gtest/ /usr/src/gtest/ &&
-           cd /usr/src/gtest && ls lib/ &&
+           cd /usr/src/gtest && ls lib/
 
     - name: Build
       run: cmake -DBUILD_TESTS=ON .
