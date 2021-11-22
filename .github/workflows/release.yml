@@ -73,6 +73,3 @@ jobs:
       
     - name: Run Unit Tests
       run: ./DiffCpp_tst
-
-    - name: Run Tree command
-      run: cd ~ && tree
