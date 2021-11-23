@@ -21,7 +21,7 @@ jobs:
 
   build:
     name: Build Tool
-    uses: Shehab7osny/DiffCpp/github/workflows/build.yml@main
+    uses: Shehab7osny/DiffCpp/.github/workflows/build.yml@main
     with:
       username: Shehab7osny
 
