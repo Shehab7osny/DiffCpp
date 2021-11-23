@@ -20,7 +20,7 @@ jobs:
         sources: "src/*.cpp,include/*.h,test/*.cpp"
 
   build:
-    name: Build Tool
+    name: Build
     uses: Shehab7osny/DiffCpp/.github/workflows/build.yml@main
     with:
       username: Shehab7osny
@@ -87,4 +87,12 @@ jobs:
       run: make
       
     - name: Run Benchmark
-      run: ./DiffCpp_BENCH
+      run: ./DiffCpp_BENCH --benchmark_format=json | tee benchmark_result.json
+
+    - name: Store benchmark result
+      uses: benchmark-action/github-action-benchmark@v1
+      with:
+        tool: 'googlecpp'
+        output-file-path: benchmark_result.json
+        external-data-json-path: ./cache/benchmark_result.json
+        fail-on-alert: true

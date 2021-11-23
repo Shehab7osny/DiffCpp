@@ -11,7 +11,7 @@ on:
 jobs:
 
   build-windows:
-    name: Windows Build
+    name: Windows
     runs-on: windows-latest
     steps:
     - name: Checkout Repository
@@ -22,7 +22,7 @@ jobs:
       run: cmake --build .
 
   build-linux:
-    name: Linux Build
+    name: Linux
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
