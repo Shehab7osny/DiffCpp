@@ -14,3 +14,8 @@ if (BUILD_TESTS)
 	add_subdirectory(test)
 	add_subdirectory(googletest)
 endif()
+
+if (BUILD_BENCH)
+	add_subdirectory(benchmark)
+	add_subdirectory(performance)
+endif()
