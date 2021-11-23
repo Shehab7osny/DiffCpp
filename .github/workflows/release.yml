@@ -19,33 +19,16 @@ jobs:
       with:
         sources: "src/*.cpp,include/*.h,test/*.cpp"
 
-  build-windows:
-    name: Windows Build
-    runs-on: windows-latest
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-    - name: Build
-      run: pwd && cmake .
-    - name: Make
-      run: cmake --build .
-
-  build-linux:
-    name: Linux Build
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-    - name: Build
-      run: pwd && cmake .
-    - name: Make
-      run: make
+  build:
+    name: Build Tool
+    uses: Shehab7osny/DiffCpp/github/workflows/build.yml@main
+    with:
+      username: Shehab7osny
 
   unit-testing:
     name: Unit Tests
     needs:
-      - build-windows
-      - build-linux
+      - build
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
