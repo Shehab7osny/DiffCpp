@@ -73,3 +73,40 @@ jobs:
       
     - name: Run Unit Tests
       run: ./DiffCpp_tst
+
+    name: Benchmark (Performance)
+    needs:
+      - Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Cache Google Benchmark Package
+      id: cached-benchmark
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-gbench-repo
+      with:
+        path: benchmark
+        key: ${{ runner.os }}-build-${{ env.cache-name }}
+
+    - name: Install Google Benchmark
+      if: steps.cached-benchmark.outputs.cache-hit != 'true'
+      run: mkdir benchmark &&
+           git clone https://github.com/google/benchmark.git benchmark
+
+    - name: Build
+      run: cmake -DBENCHMARK_DOWNLOAD_DEPENDENCIES=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_BENCH=ON .
+
+    - name: Make
+      run: make
+      
+    - name: Run Benchmark
+      run: ./DiffCpp_BENCH --benchmark_format=json | tee benchmark_result.json
+
+    - name: Store benchmark result
+      uses: benchmark-action/github-action-benchmark@v1
+      with:
+        tool: 'googlecpp'
+        output-file-path: benchmark_result.json
