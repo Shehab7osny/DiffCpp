@@ -17,9 +17,9 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
     - name: Create a Directory for Windows Artifact
-      run: mkdir Build_Windows && cd Build_Windows
+      run: mkdir Build_Windows
     - name: Build
-      run: pwd && cmake .
+      run: cd Build_Windows && pwd && cmake .,
     - name: Make
       run: cmake --build .
 
@@ -30,8 +30,8 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
     - name: Create a Directory for Linux Artifact
-      run: mkdir Build_Linux && cd Build_Linux
+      run: mkdir Build_Linux
     - name: Build
-      run: pwd && cmake .
+      run: cd Build_Linux && pwd && cmake ..
     - name: Make
       run: make
