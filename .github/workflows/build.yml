@@ -19,12 +19,12 @@ jobs:
     - name: Build
       run: cmake .
     - name: Make
-      run: cmake --build . && ls
+      run: cmake --build . && cd Debug/ && ls
     - name: Upload Windows Artifact
       uses: actions/upload-artifact@v2
       with:
         name: DiffCpp-Windows
-        path: Debug/DiffCpp
+        path: Debug
 
   build-linux:
     name: Linux
