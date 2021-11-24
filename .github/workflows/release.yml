@@ -60,6 +60,9 @@ jobs:
       run: ./DiffCpp_tst
 
   benchmarking:
+    environment:
+      name: production
+      url: https://github.com/${{ github.repository }}/dev/bench
     name: Benchmark (Performance)
     needs:
       - unit-testing
