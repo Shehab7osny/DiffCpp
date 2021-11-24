@@ -19,7 +19,7 @@ jobs:
     - name: Create a Directory for Windows Artifact
       run: mkdir Build_Windows
     - name: Build
-      run: cd Build_Windows && cmake .,
+      run: cd Build_Windows && cmake ..
     - name: Make
       run: cd Build_Windows && cmake --build .
 

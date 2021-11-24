@@ -88,7 +88,7 @@ jobs:
       run: cmake -DBENCHMARK_DOWNLOAD_DEPENDENCIES=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_BENCH=ON .
 
     - name: Make
-      run: make
+      run: ls && make
       
     - name: Run Benchmark
       run: ./DiffCpp_BENCH --benchmark_format=json | tee benchmark_result.json
