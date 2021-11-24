@@ -60,9 +60,7 @@ jobs:
       run: ./DiffCpp_tst
 
   benchmarking:
-    environment:
-      name: Benchmark Results
-      url: https://Shehab7osny.github.io/DiffCpp/dev/bench
+    url: https://Shehab7osny.github.io/DiffCpp/dev/bench
     name: Benchmark (Performance)
     needs:
       - unit-testing
@@ -103,9 +101,3 @@ jobs:
         fail-on-alert: true
         comment-on-alert: true
         auto-push: true
-
-    - name: Removing Environment
-      uses: strumwolf/delete-deployment-environment@v2
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        environment: Benchmark Results
