@@ -60,9 +60,7 @@ jobs:
       run: ./DiffCpp_tst
 
   benchmarking:
-    environment:
-      name: production
-      url: https://Shehab7osny.github.io/DiffCpp/dev/bench
+    url: https://Shehab7osny.github.io/DiffCpp/dev/bench
     name: Benchmark (Performance)
     needs:
       - unit-testing
