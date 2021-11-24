@@ -20,6 +20,8 @@ jobs:
       run: cmake .
     - name: Make
       run: cmake --build .
+    - name: check binary location
+      run: ls
     - name: Upload Windows Artifact
       uses: actions/upload-artifact@v2
       with:
