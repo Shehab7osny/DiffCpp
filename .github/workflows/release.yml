@@ -3,8 +3,10 @@ name: Release
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+
+permissions:
+  deployments: write
+  contents: write
 
 jobs:
 
@@ -95,4 +97,7 @@ jobs:
         tool: 'googlecpp'
         output-file-path: benchmark_result.json
         external-data-json-path: ./cache/benchmark_result.json
+        github-token: ${{ secrets.GITHUB_TOKEN }}
         fail-on-alert: true
+        comment-on-alert: true
+        auto-push: true
