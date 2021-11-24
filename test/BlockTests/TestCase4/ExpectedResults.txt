@@ -1,0 +1,93 @@
+[Keep]This article is about the utility program. For the general topic of file  comparison,
+[Keep]see File comparison. For diffs in Wikipedia, see help:diff. For other uses, see DIFF.
+[Keep]In computing, the utility diff is a data comparison tool that computes  and  displays
+[Keep]the differences between the contents of files. Unlike edit distance notions used  for
+[Keep]other purposes, diff is line-oriented rather than character-oriented, but it  is like
+[Keep]Levenshtein distance in that it tries to determine the smallest set of  deletions and
+[Keep]insertions to create one file from the other. The utility displays the changes in one
+[Keep]of several standard formats, such that both humans or computers can parse the changes
+[Keep]and use them for patching. Typically, diff is used to  show the  changes  between two
+[Keep]versions of the same file. Modern implementations support binary files to. The output
+[Keep]is called a "diff", or a patch, since the output can be applied with the Unix program
+[Keep]patch. The output of similar file comparison utilities are also called a "diff"; like
+[Keep]the use of the word "grep" for describing the act of searching, the word diff  became
+[Keep]a generic term for calculating data difference and the results  thereof. The POSIX bn
+[Keep]standard specifies the  behavior of the  "diff" and  "patch" utilities and their file
+[Delete]formats. Diff was developed in the early 1970s on the Unix operating system which was
+[Insert]formats. Diff was developed in the early 1960s on the Unix operating system which was
+[Keep]emerging from Bell Labs in Murray Hill, New Jersey. The final version, first  shipped
+[Delete]with the 5th Edition of Unix in 1974,  was entirely  written by Douglas McIlroy. This
+[Delete]research was published in a 1976 paper co-written with James W. Hunt who developed an
+[Insert]with the 5th Edition of Unix in 1980,  was entirely  written by Douglas McIlroy. This
+[Insert]research was published in a 1990 paper co-written with James W. Hunt who developed an
+[Keep]initial prototype of diff. The algorithm this paper described  became  known as  Hunt
+[Keep]Szymanski algorithm. McIlroy's work  was preceded and  influenced by  Steve Johnson's
+[Keep]comparison program on GECOS and Mike Lesk's  proof program. Proof also  originated on
+[Keep]Unix and, like diff, produced line-by-line changes and even used  angle-brackets (">"
+[Keep]and "<") for  presenting line  insertions and  deletions in the program's output. The
+[Keep]heuristics used in  these early  applications were,  however,  deemed unreliable. The
+[Keep]potential usefulness of a diff tool provoked McIlroy into researching and designing a
+[Keep]more robust tool that could be used in a variety of tasks but perform well in the pro
+[Keep]cessing and size limitations of the PDP-11's hardware. His approach to the problem re
+[Keep]sulted from collaboration also with individuals at Bell Labs including Alfred Aho, El
+[Keep]liot Pinson, Jeffrey Ullman, and Harold S. Stone. In the context of Unix, the use  of
+[Keep]the ed line editor provided diff with the  natural ability  to create  machine-usable
+[Keep]"edit scripts". These edit scripts, when saved to a file, can, along with the  origin
+[Keep]file, be reconstituted by ed into the modified file in its entirety. This greatly red
+[Keep]uced the secondary storage necessary to maintain multiple versions of a file. McIlroy
+[Keep]considered writing a post-processor for diff where a variety of output formats  could
+[Keep]be designed and implemented, but he found it more frugal and simpler to have diff  be
+[Delete]responsible for generating the syntax and reverse-order input accepted by the ed comm
+[Insert]responsible for generating the syntax and forward-order input accepted by the ed comm
+[Keep]and. Late in 1984 Larry Wall created a separate utility, patch, releasing  its source
+[Keep]code on the mod.sources and net.sources newsgroups. This program generalized and exte
+[Keep]nded the ability to modify files with output from diff. Modes in Emacs also allow for
+[Keep]converting the format of patches and even editing patches interactively. In diff's ea
+[Keep]rly years, common uses included comparing changes in the source of software  code and
+[Keep]markup for technical documents, verifying program debugging output, comparing filesys
+[Keep]tem listings and analyzing computer assembly code. The output targeted for ed was mot
+[Keep]ivated to provide compression for a sequence of modifications made to a file. The Sou
+[Keep]rce Code Control System (SCCS) and its ability to archive revisions emerged in the la
+[Keep]te 1970s as a consequence of storing edit scripts from diff. The diff command is invo
+[Keep]ked from the command line, passing it the names of two files: diff original  new. The
+[Keep]output of the command represents the changes required to transform  the original file
+[Keep]into the new file. If original and new are directories, then diff will be run on each
+[Keep]file that exists in both directories. An option, -r, will recursively descend any mat
+[Keep]ching subdirectories to compare files between directories. Any of the examples in the
+[Keep]article use the following two files, original and new:
+[Keep]
+[Insert]This is an important
+[Insert]notice! It should
+[Insert]therefore be located at
+[Insert]the beginning of this
+[Insert]document!
+[Insert]
+[Keep]This part of the
+[Keep]document has stayed the
+[Keep]same from version to
+[Keep]version.  It shouldn't
+[Keep]be shown if it doesn't
+[Keep]change.  Otherwise, that
+[Keep]would not be helping to
+[Keep]compress the size of the
+[Keep]changes.
+[Keep]
+[Delete]This paragraph contains
+[Delete]text that is outdated.
+[Delete]It will be deleted in the
+[Delete]near future.
+[Delete]
+[Keep]It is important to spell
+[Delete]check this dokument. On
+[Insert]check this document. On
+[Keep]the other hand, a
+[Keep]misspelled word isn't
+[Keep]the end of the world.
+[Keep]Nothing in the rest of
+[Keep]this paragraph needs to
+[Keep]be changed. Things can
+[Keep]be added after it.
+[Insert]
+[Insert]This paragraph contains
+[Insert]important new additions
+[Insert]to this document.

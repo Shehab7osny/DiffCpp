@@ -1,0 +1,33 @@
+
+name: Build Tool on Windows & Linux
+
+on:
+  workflow_call:
+    inputs:
+      username:
+        required: true
+        type: string
+
+jobs:
+
+  build-windows:
+    name: Windows
+    runs-on: windows-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Build
+      run: pwd && cmake .
+    - name: Make
+      run: cmake --build .
+
+  build-linux:
+    name: Linux
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Build
+      run: pwd && cmake .
+    - name: Make
+      run: make

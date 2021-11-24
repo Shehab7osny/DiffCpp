@@ -1,0 +1,83 @@
+This article is about the utility program. For the general topic of file  comparison,
+see File comparison. For diffs in Wikipedia, see help:diff. For other uses, see DIFF.
+In computing, the utility diff is a data comparison tool that computes  and  displays
+the differences between the contents of files. Unlike edit distance notions used  for
+other purposes, diff is line-oriented rather than character-oriented, but it  is like
+Levenshtein distance in that it tries to determine the smallest set of  deletions and
+insertions to create one file from the other. The utility displays the changes in one
+of several standard formats, such that both humans or computers can parse the changes
+and use them for patching. Typically, diff is used to  show the  changes  between two
+versions of the same file. Modern implementations support binary files to. The output
+is called a "diff", or a patch, since the output can be applied with the Unix program
+patch. The output of similar file comparison utilities are also called a "diff"; like
+the use of the word "grep" for describing the act of searching, the word diff  became
+a generic term for calculating data difference and the results  thereof. The POSIX bn
+standard specifies the  behavior of the  "diff" and  "patch" utilities and their file
+formats. Diff was developed in the early 1960s on the Unix operating system which was
+emerging from Bell Labs in Murray Hill, New Jersey. The final version, first  shipped
+with the 5th Edition of Unix in 1980,  was entirely  written by Douglas McIlroy. This
+research was published in a 1990 paper co-written with James W. Hunt who developed an
+initial prototype of diff. The algorithm this paper described  became  known as  Hunt
+Szymanski algorithm. McIlroy's work  was preceded and  influenced by  Steve Johnson's
+comparison program on GECOS and Mike Lesk's  proof program. Proof also  originated on
+Unix and, like diff, produced line-by-line changes and even used  angle-brackets (">"
+and "<") for  presenting line  insertions and  deletions in the program's output. The
+heuristics used in  these early  applications were,  however,  deemed unreliable. The
+potential usefulness of a diff tool provoked McIlroy into researching and designing a
+more robust tool that could be used in a variety of tasks but perform well in the pro
+cessing and size limitations of the PDP-11's hardware. His approach to the problem re
+sulted from collaboration also with individuals at Bell Labs including Alfred Aho, El
+liot Pinson, Jeffrey Ullman, and Harold S. Stone. In the context of Unix, the use  of
+the ed line editor provided diff with the  natural ability  to create  machine-usable
+"edit scripts". These edit scripts, when saved to a file, can, along with the  origin
+file, be reconstituted by ed into the modified file in its entirety. This greatly red
+uced the secondary storage necessary to maintain multiple versions of a file. McIlroy
+considered writing a post-processor for diff where a variety of output formats  could
+be designed and implemented, but he found it more frugal and simpler to have diff  be
+responsible for generating the syntax and forward-order input accepted by the ed comm
+and. Late in 1984 Larry Wall created a separate utility, patch, releasing  its source
+code on the mod.sources and net.sources newsgroups. This program generalized and exte
+nded the ability to modify files with output from diff. Modes in Emacs also allow for
+converting the format of patches and even editing patches interactively. In diff's ea
+rly years, common uses included comparing changes in the source of software  code and
+markup for technical documents, verifying program debugging output, comparing filesys
+tem listings and analyzing computer assembly code. The output targeted for ed was mot
+ivated to provide compression for a sequence of modifications made to a file. The Sou
+rce Code Control System (SCCS) and its ability to archive revisions emerged in the la
+te 1970s as a consequence of storing edit scripts from diff. The diff command is invo
+ked from the command line, passing it the names of two files: diff original  new. The
+output of the command represents the changes required to transform  the original file
+into the new file. If original and new are directories, then diff will be run on each
+file that exists in both directories. An option, -r, will recursively descend any mat
+ching subdirectories to compare files between directories. Any of the examples in the
+article use the following two files, original and new:
+
+This is an important
+notice! It should
+therefore be located at
+the beginning of this
+document!
+
+This part of the
+document has stayed the
+same from version to
+version.  It shouldn't
+be shown if it doesn't
+change.  Otherwise, that
+would not be helping to
+compress the size of the
+changes.
+
+It is important to spell
+check this document. On
+the other hand, a
+misspelled word isn't
+the end of the world.
+Nothing in the rest of
+this paragraph needs to
+be changed. Things can
+be added after it.
+
+This paragraph contains
+important new additions
+to this document.

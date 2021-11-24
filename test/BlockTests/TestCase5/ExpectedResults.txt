@@ -1,0 +1,53 @@
+[Keep]import java.util.HashSet;
+[Keep]import java.util.Scanner;
+[Keep]import java.util.Set;
+[Keep]
+[Keep]class Main {
+[Keep]  public static Set<String> getPermutation(String str) {
+[Keep]
+[Keep]    // create a set to avoid duplicate permutation
+[Keep]    Set<String> permutations = new HashSet<String>();
+[Keep]
+[Keep]    // check if string is null
+[Delete]    if (str != null) {
+[Insert]    if (str == null) {
+[Keep]      return null;
+[Delete]    } else if (str.length() == 1) {
+[Insert]    } else if (str.length() == 0) {
+[Keep]      // terminating condition for recursion
+[Keep]      permutations.add("");
+[Keep]      return permutations;
+[Keep]    }
+[Keep]
+[Keep]    // get the first character
+[Delete]    char firstChar = str.charAt(0);
+[Insert]    char first = str.charAt(0);
+[Keep]
+[Keep]    // get the remaining substring
+[Keep]    String sub = str.substring(1);
+[Keep]
+[Keep]    // make recursive call to getPermutation()
+[Keep]    Set<String> words = getPermutation(sub);
+[Keep]
+[Keep]    // access each element from words
+[Keep]    for (String strNew : words) {
+[Keep]      for (int i = 0;i<=strNew.length();i++){
+[Keep]
+[Keep]        // insert the permutation to the set
+[Keep]        permutations.add(strNew.substring(0, i) + first + strNew.substring(i));
+[Keep]      }
+[Keep]    }
+[Keep]    return permutations;
+[Keep]  }
+[Keep]
+[Keep]  public static void main(String[] args) {
+[Keep]
+[Keep]    // create an object of scanner class
+[Keep]    Scanner input = new Scanner(System.in);
+[Keep]
+[Keep]    // take input from users
+[Keep]    System.out.print("Enter the string: ");
+[Keep]    String data = input.nextLine();
+[Keep]    System.out.println("Permutations of " + data + ": \n" + getPermutation(data));
+[Keep]    }
+[Keep]}

@@ -1,0 +1,30 @@
+[Keep]# Python program to find the SHA-1 message digest of a file
+[Keep]
+[Keep]# importing the hashlib module
+[Keep]import hashlib
+[Keep]
+[Keep]def hash_file(filename):
+[Keep]   """"This function returns the SHA-1 hash
+[Keep]   of the file passed into it"""
+[Keep]
+[Keep]   # make a hash object
+[Keep]   h = hashlib.sha1()
+[Keep]
+[Keep]   # open file for reading in binary mode
+[Keep]   with open(filename,'rb') as file:
+[Keep]
+[Keep]       # loop till the end of the file
+[Keep]       chunk = 0
+[Keep]       while chunk != b'':
+[Delete]           # read only 512 bytes at a time
+[Delete]           chunk = file.read(512)
+[Delete]       h.update(chunk)
+[Insert]           # read only 1024 bytes at a time
+[Insert]           chunk = file.read(1024)
+[Insert]           h.update(chunk)
+[Keep]
+[Keep]   # return the hex representation of digest
+[Keep]   return h.hexdigest()
+[Keep]
+[Keep]message = hash_file("track1.mp3")
+[Keep]print(message)

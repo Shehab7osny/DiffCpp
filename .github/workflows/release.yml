@@ -1,0 +1,98 @@
+name: Release
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  clang-format-check:
+    name: Codebase Formatting
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Check Codebase Format
+      uses: RafikFarhad/clang-format-github-action@v1.0.1
+      with:
+        sources: "src/*.cpp,include/*.h,test/*.cpp"
+
+  build:
+    name: Build
+    uses: Shehab7osny/DiffCpp/.github/workflows/build.yml@main
+    with:
+      username: Shehab7osny
+
+  unit-testing:
+    name: Unit Tests
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Cache GoogleTest Package
+      id: cached-gtest
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-gtest-repo
+      with:
+        path: googletest
+        key: ${{ runner.os }}-build-${{ env.cache-name }}
+
+    - name: Install GoogleTest
+      if: steps.cached-gtest.outputs.cache-hit != 'true'
+      run: mkdir googletest &&
+           git clone https://github.com/google/googletest.git googletest
+
+    - name: Build
+      run: cmake -DBUILD_TESTS=ON .
+
+    - name: Make
+      run: make
+      
+    - name: Run Unit Tests
+      run: ./DiffCpp_tst
+
+  benchmarking:
+    name: Benchmark (Performance)
+    needs:
+      - unit-testing
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Cache Google Benchmark Package
+      id: cached-benchmark
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-gbench-repo
+      with:
+        path: benchmark
+        key: ${{ runner.os }}-build-${{ env.cache-name }}
+
+    - name: Install Google Benchmark
+      if: steps.cached-benchmark.outputs.cache-hit != 'true'
+      run: mkdir benchmark &&
+           git clone https://github.com/google/benchmark.git benchmark
+
+    - name: Build
+      run: cmake -DBENCHMARK_DOWNLOAD_DEPENDENCIES=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_BENCH=ON .
+
+    - name: Make
+      run: make
+      
+    - name: Run Benchmark
+      run: ./DiffCpp_BENCH --benchmark_format=json | tee benchmark_result.json
+
+    - name: Store benchmark result
+      uses: benchmark-action/github-action-benchmark@v1
+      with:
+        tool: 'googlecpp'
+        output-file-path: benchmark_result.json
+        external-data-json-path: ./cache/benchmark_result.json
+        fail-on-alert: true
