@@ -103,3 +103,11 @@ jobs:
         fail-on-alert: true
         comment-on-alert: true
         auto-push: true
+
+  delete:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: strumwolf/delete-deployment-environment@v2
+          with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            environment: Benchmark Results
