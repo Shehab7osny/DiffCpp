@@ -24,7 +24,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: DiffCpp-Windows
-        path: ./DiffCpp
+        path: DiffCpp
 
   build-linux:
     name: Linux
