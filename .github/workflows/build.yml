@@ -16,12 +16,15 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
-    - name: Create a Directory for Windows Artifact
-      run: mkdir Build_Windows
     - name: Build
-      run: cd Build_Windows && cmake ..
+      run: cmake .
     - name: Make
-      run: cd Build_Windows && cmake --build .
+      run: cmake --build .
+    - name: Upload Windows Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: DiffCpp-Windows
+        path: ./DiffCpp
 
   build-linux:
     name: Linux
@@ -29,9 +32,12 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
-    - name: Create a Directory for Linux Artifact
-      run: mkdir Build_Linux
     - name: Build
-      run: cd Build_Linux && cmake ..
+      run: cmake .
     - name: Make
-      run: cd Build_Linux && make
+      run: make
+    - name: Upload Linux Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: DiffCpp-Linux
+        path: ./DiffCpp
