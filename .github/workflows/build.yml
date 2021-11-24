@@ -19,9 +19,9 @@ jobs:
     - name: Create a Directory for Windows Artifact
       run: mkdir Build_Windows
     - name: Build
-      run: cd Build_Windows && pwd && cmake .,
+      run: cd Build_Windows && cmake .,
     - name: Make
-      run: cmake --build .
+      run: cd Build_Windows && cmake --build .
 
   build-linux:
     name: Linux
@@ -32,6 +32,6 @@ jobs:
     - name: Create a Directory for Linux Artifact
       run: mkdir Build_Linux
     - name: Build
-      run: cd Build_Linux && pwd && cmake ..
+      run: cd Build_Linux && cmake ..
     - name: Make
-      run: make
+      run: cd Build_Linux && make
