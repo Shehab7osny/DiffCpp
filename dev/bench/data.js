@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1637741784364,
+  "lastUpdate": 1637741954097,
   "repoUrl": "https://github.com/Shehab7osny/DiffCpp",
   "entries": {
     "Benchmark": [
@@ -108,6 +108,60 @@ window.BENCHMARK_DATA = {
             "value": 114460.89664252906,
             "unit": "ns/iter",
             "extra": "iterations: 6076\ncpu: 114313.93285055962 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "shehab2015@live.com",
+            "name": "Shehab Hosny",
+            "username": "Shehab7osny"
+          },
+          "committer": {
+            "email": "shehab2015@live.com",
+            "name": "Shehab Hosny",
+            "username": "Shehab7osny"
+          },
+          "distinct": true,
+          "id": "8ab0ccbb2e7f3bc92c938e61ea49d934b4cc7c9c",
+          "message": "update workflow",
+          "timestamp": "2021-11-24T10:17:12+02:00",
+          "tree_id": "c843358fa5a2d9e995fbea0b513ef5fdce7ea21c",
+          "url": "https://github.com/Shehab7osny/DiffCpp/commit/8ab0ccbb2e7f3bc92c938e61ea49d934b4cc7c9c"
+        },
+        "date": 1637741953615,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "BM_Diff_1",
+            "value": 18962.346769696847,
+            "unit": "ns/iter",
+            "extra": "iterations: 37659\ncpu: 18443.952069890332 ns\nthreads: 1"
+          },
+          {
+            "name": "BM_Diff_2",
+            "value": 105088.05185515826,
+            "unit": "ns/iter",
+            "extra": "iterations: 6711\ncpu: 104814.36477425127 ns\nthreads: 1"
+          },
+          {
+            "name": "BM_Diff_3",
+            "value": 46343.23455241193,
+            "unit": "ns/iter",
+            "extra": "iterations: 15941\ncpu: 45519.188068502604 ns\nthreads: 1"
+          },
+          {
+            "name": "BM_Diff_4",
+            "value": 2879808.4382470003,
+            "unit": "ns/iter",
+            "extra": "iterations: 251\ncpu: 2879567.454183267 ns\nthreads: 1"
+          },
+          {
+            "name": "BM_Diff_5",
+            "value": 115728.1304847953,
+            "unit": "ns/iter",
+            "extra": "iterations: 6085\ncpu: 115493.71799506986 ns\nthreads: 1"
           }
         ]
       }
