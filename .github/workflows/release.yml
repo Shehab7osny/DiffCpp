@@ -31,6 +31,7 @@ jobs:
       with:
           additional-packages: font-fira-code
           working-directory: 'include/'
+          doxyfile-path: 'docs/Doxygen'
     - name: Check Doxygen
       run: ls
         
