@@ -40,7 +40,7 @@ static const char *Starting_MSG =
 
 /**
  * DiffSession
- * 
+ *
  * This class provides the user a single session  (as in Windows FC diff tool)
  * to get the updates in two file versions. The user must pass atleast two
  * arguments in addition to the exe call. If any of these arguments are missing
@@ -50,10 +50,9 @@ static const char *Starting_MSG =
  */
 class DiffSession {
 public:
-
   /**
    * Construtor that starts a single session for files comparison
-   * 
+   *
    * @param noOfArgs Total number of arguments passed
    * @param argsList List of actual arguments passed
    */

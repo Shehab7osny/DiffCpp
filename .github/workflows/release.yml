@@ -24,6 +24,8 @@ jobs:
 
   doxygen-doc:
     name: Doxygen Documentation
+    needs:
+      - clang-format-check
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
