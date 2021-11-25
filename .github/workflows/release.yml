@@ -31,7 +31,6 @@ jobs:
     - name: Run Doxygen
       uses: mattnotmitt/doxygen-action@v1
       with:
-          additional-packages: font-fira-code
           working-directory: 'include/'
     - name: Check Doxygen
       run: ls
