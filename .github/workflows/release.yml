@@ -23,7 +23,7 @@ jobs:
         sources: "src/*.cpp,include/*.h,test/*.cpp"
 
   doxygen-doc:
-    name: Doxygen Documentation
+    name: Codebase Documentation
     needs:
       - clang-format-check
     runs-on: ubuntu-latest
