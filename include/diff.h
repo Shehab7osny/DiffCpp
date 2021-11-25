@@ -50,6 +50,7 @@ static const char *Starting_MSG =
  */
 class DiffSession {
 public:
+
   /**
    * Construtor that starts a single session for files comparison
    * 

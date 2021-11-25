@@ -30,8 +30,7 @@ jobs:
       uses: mattnotmitt/doxygen-action@v1
       with:
           additional-packages: font-fira-code
-          working-directory: 'include/'
-          doxyfile-path: './docs/Doxygen/Doxyfile'
+          doxyfile-path: 'docs/Doxygen'
     - name: Check Doxygen
       run: ls
         
