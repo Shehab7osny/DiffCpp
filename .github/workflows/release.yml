@@ -23,6 +23,9 @@ jobs:
         sources: "src/*.cpp,include/*.h,test/*.cpp"
 
   doxygen-doc:
+    environment:
+      name: Doxygen Documentation
+      url: https://shehab7osny.github.io/DiffCpp/include/
     name: Codebase Documentation
     needs:
       - clang-format-check
