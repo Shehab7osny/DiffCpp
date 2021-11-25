@@ -1,7 +1,9 @@
 name: Release
 
+# on:
+#   workflow_dispatch
 on:
-  workflow_dispatch
+  push
 
 permissions:
   deployments: write
@@ -31,7 +33,6 @@ jobs:
       with:
           additional-packages: font-fira-code
           working-directory: 'include/'
-          doxyfile-path: '../docs/Doxygen'
     - name: Check Doxygen
       run: ls
         
