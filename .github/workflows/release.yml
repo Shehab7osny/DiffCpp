@@ -20,6 +20,20 @@ jobs:
       with:
         sources: "src/*.cpp,include/*.h,test/*.cpp"
 
+  doxygen-doc:
+    name: Doxygen Documentation
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Run Doxygen
+      uses: mattnotmitt/doxygen-action@v1
+      with:
+          additional-packages: font-fira-code
+          working-directory: 'include/'
+    - name: Check Doxygen
+      run: ls
+        
   build:
     name: Build
     uses: Shehab7osny/DiffCpp/.github/workflows/build.yml@main
