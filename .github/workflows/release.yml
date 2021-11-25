@@ -85,7 +85,7 @@ jobs:
   benchmarking:
     environment:
       name: Benchmark Results
-      url: https://Shehab7osny.github.io/DiffCpp/dev/bench
+      url: https://shehab7osny.github.io/DiffCpp/dev/bench
     name: Benchmark (Performance)
     needs:
       - unit-testing
