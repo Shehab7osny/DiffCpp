@@ -2,11 +2,7 @@
 name: Build Tool
 
 on:
-  workflow_call:
-    inputs:
-      username:
-        required: true
-        type: string
+  workflow_call
 
 jobs:
 
