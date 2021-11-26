@@ -116,7 +116,7 @@ jobs:
     name: Release Project
     needs:
       - benchmarking
-      - release-note
+      - release-notes
     runs-on: ubuntu-latest
     steps:
     - name: Download Linux Artifact
