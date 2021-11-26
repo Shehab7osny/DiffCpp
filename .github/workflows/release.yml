@@ -131,6 +131,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create-new-release.outputs.upload_url }}
-        asset_path: ./DiffCpp-Linux
+        asset_path: DiffCpp-Linux
         asset_name: DiffCpp-Linux
         asset_content_type: application/zip
