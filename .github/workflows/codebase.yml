@@ -1,5 +1,5 @@
 
-name: Codebase Formatting Checks and Documentation
+name: Codebase Ops
 
 on:
   workflow_call:

@@ -1,5 +1,5 @@
 
-name: Build Tool on Windows & Linux
+name: Build Tool
 
 on:
   workflow_call:
