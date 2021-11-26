@@ -46,7 +46,7 @@ jobs:
         
   build:
     name: Build
-    uses: Shehab7osny/DiffCpp/.github/workflows/reusable/build.yml@main
+    uses: Shehab7osny/DiffCpp/.github/reusable/build.yml@main
     with:
       username: Shehab7osny
 
