@@ -7,9 +7,6 @@ on:
       username:
         required: true
         type: string
-      is-release:
-        required: true
-        type: bool
 
 jobs:
 
@@ -25,7 +22,7 @@ jobs:
         sources: "src/*.cpp,include/*.h,test/*.cpp"
 
   doxygen-doc:
-  if: ${{ github.event.inputs.is-release }} = 'true'
+  if: ${{ github.event.inputs.is-release }} = 'Shehab7osny'
     environment:
       name: Doxygen Documentation
       url: https://shehab7osny.github.io/DiffCpp/include/
