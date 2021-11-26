@@ -27,6 +27,8 @@ jobs:
 
   release-notes:
     name: Release Notes
+    needs:
+      - codebase
     runs-on: ubuntu-latest
     steps:
       - name: Check
@@ -114,7 +116,7 @@ jobs:
     name: Release Project
     needs:
       - benchmarking
-      - codebase
+      - release-note
     runs-on: ubuntu-latest
     steps:
     - name: Download Linux Artifact
