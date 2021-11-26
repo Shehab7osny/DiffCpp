@@ -35,7 +35,7 @@ jobs:
         run: ls
 
   unit-testing:
-    name: Unit Tests
+    name: Unit and Block Testing
     needs:
       - build
     runs-on: ubuntu-latest
