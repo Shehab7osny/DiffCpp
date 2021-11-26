@@ -4,9 +4,9 @@ name: Codebase Documentation
 on:
   workflow_call:
     inputs:
-      username:
+      is-release:
         required: true
-        type: string
+        type: boolean
 
 jobs:
 
@@ -22,7 +22,7 @@ jobs:
         sources: "src/*.cpp,include/*.h,test/*.cpp"
 
   doxygen-doc:
-    if: ${{ github.event.inputs.is-release }} = 'Shehab7osny'
+    if: ${{ github.event.inputs.is-release }} = 'true'
     environment:
       name: Doxygen Documentation
       url: https://shehab7osny.github.io/DiffCpp/include/
