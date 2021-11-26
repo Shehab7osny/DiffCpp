@@ -22,7 +22,7 @@ jobs:
         sources: "src/*.cpp,include/*.h,test/*.cpp"
 
   doxygen-doc:
-    if: ${{ github.event.inputs.is-release }} = 'true'
+    if: ${{ github.event.inputs.is-release }} == 'true'
     environment:
       name: Doxygen Documentation
       url: https://shehab7osny.github.io/DiffCpp/include/
