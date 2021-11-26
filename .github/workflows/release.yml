@@ -100,3 +100,37 @@ jobs:
         comment-on-alert: true
         # Update
         auto-push: true
+
+  release-project:
+    name: Release Project
+    needs:
+      - benchmarking
+      - codebase
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download Windows Artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: DiffCpp-Windows
+    - name: Download Linux Artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: DiffCpp-Linux
+    - name: Create GitHub Release
+      id: create-new-release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+    - name: Upload Release Asset
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create-new-release.outputs.upload_url }}
+        asset_path: ./DiffCpp-Linux
+        asset_name: DiffCpp-Linux
+        asset_content_type: application/zip
