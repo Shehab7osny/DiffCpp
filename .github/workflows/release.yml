@@ -22,6 +22,28 @@ jobs:
   build:
     name: Build
     uses: Shehab7osny/DiffCpp/.github/workflows/build.yml@main
+    
+  doxygen-doc:
+    environment:
+      name: Doxygen Documentation
+      url: https://shehab7osny.github.io/DiffCpp/include/
+    name: Generate Documentation
+    needs:
+      - codebase
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Run Doxygen
+      uses: mattnotmitt/doxygen-action@v1
+      with:
+          working-directory: 'include/'
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./include/html
+        destination_dir: ./include
 
   release-notes:
     name: Release Notes
