@@ -11,38 +11,11 @@ permissions:
 
 jobs:
 
-  clang-format-check:
-    name: Codebase Formatting
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-    - name: Check Codebase Format
-      uses: RafikFarhad/clang-format-github-action@v1.0.1
-      with:
-        sources: "src/*.cpp,include/*.h,test/*.cpp"
-
-  doxygen-doc:
-    environment:
-      name: Doxygen Documentation
-      url: https://shehab7osny.github.io/DiffCpp/include/
-    name: Codebase Documentation
-    needs:
-      - clang-format-check
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-    - name: Run Doxygen
-      uses: mattnotmitt/doxygen-action@v1
-      with:
-          working-directory: 'include/'
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./include/html
-        destination_dir: ./include
+  codebase:
+    name: Codebase
+    uses: Shehab7osny/DiffCpp/.github/workflows/codebase.yml@main
+    with:
+      username: Shehab7osny
         
   build:
     name: Build
