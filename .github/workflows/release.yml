@@ -17,7 +17,7 @@ jobs:
     name: Codebase
     uses: Shehab7osny/DiffCpp/.github/workflows/codebase.yml@main
     with:
-      is-release: true
+      is-release: false
         
   build:
     name: Build
