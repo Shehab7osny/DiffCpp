@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1637925628527,
+  "lastUpdate": 1637930199452,
   "repoUrl": "https://github.com/Shehab7osny/DiffCpp",
   "entries": {
     "Benchmark": [
@@ -872,6 +872,36 @@ window.BENCHMARK_DATA = {
             "value": 2924159.1239671027,
             "unit": "ns/iter",
             "extra": "iterations: 242\ncpu: 2923176.9256198346 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "shehab2015@live.com",
+            "name": "Shehab Hosny",
+            "username": "Shehab7osny"
+          },
+          "committer": {
+            "email": "shehab2015@live.com",
+            "name": "Shehab Hosny",
+            "username": "Shehab7osny"
+          },
+          "distinct": true,
+          "id": "3aa78ee1fecbdb873a19f75e23c59899798c52e4",
+          "message": "Update Release Process",
+          "timestamp": "2021-11-26T14:32:44+02:00",
+          "tree_id": "f3677ab339713b678025bc72a37695b621e35e4e",
+          "url": "https://github.com/Shehab7osny/DiffCpp/commit/3aa78ee1fecbdb873a19f75e23c59899798c52e4"
+        },
+        "date": 1637930198547,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "DiffCpp_Benchmark",
+            "value": 2833389.0085106874,
+            "unit": "ns/iter",
+            "extra": "iterations: 235\ncpu: 2831547.7106382977 ns\nthreads: 1"
           }
         ]
       }
