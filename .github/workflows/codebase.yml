@@ -2,11 +2,7 @@
 name: Codebase Documentation
 
 on:
-  workflow_call:
-    inputs:
-      is-release:
-        required: true
-        type: boolean
+  workflow_call
 
 jobs:
 
@@ -20,26 +16,3 @@ jobs:
       uses: RafikFarhad/clang-format-github-action@v1.0.1
       with:
         sources: "src/*.cpp,include/*.h,test/*.cpp"
-
-  doxygen-doc:
-    if: inputs.is-release != 'true'
-    environment:
-      name: Doxygen Documentation
-      url: https://shehab7osny.github.io/DiffCpp/include/
-    name: Documentation
-    needs:
-      - clang-format-check
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-    - name: Run Doxygen
-      uses: mattnotmitt/doxygen-action@v1
-      with:
-          working-directory: 'include/'
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./include/html
-        destination_dir: ./include
