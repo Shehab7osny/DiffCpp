@@ -147,7 +147,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: Tag v${{ github.event.inputs.release_ver }}
+        tag_name: v${{ github.event.inputs.release_ver }}
         release_name: Release v${{ github.event.inputs.release_ver }}
     - name: Upload Release Asset
       id: upload-release-asset 
