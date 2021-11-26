@@ -27,6 +27,8 @@ jobs:
 
   release-notes:
     name: Release Notes
+    needs:
+      - codebase
     runs-on: ubuntu-latest
     steps:
       - name: Check
