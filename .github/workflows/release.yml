@@ -17,13 +17,11 @@ jobs:
     name: Codebase
     uses: Shehab7osny/DiffCpp/.github/workflows/codebase.yml@main
     with:
-      is-release: false
+      is-release: true
         
   build:
     name: Build
     uses: Shehab7osny/DiffCpp/.github/workflows/build.yml@main
-    with:
-      username: Shehab7osny
 
   release-notes:
     name: Release Notes
