@@ -25,6 +25,13 @@ jobs:
     with:
       username: Shehab7osny
 
+  release-notes:
+    name: Release Notes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check
+        run: ls
+
   unit-testing:
     name: Unit Tests
     needs:
