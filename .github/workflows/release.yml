@@ -18,6 +18,7 @@ jobs:
     uses: Shehab7osny/DiffCpp/.github/workflows/codebase.yml@main
     with:
       username: Shehab7osny
+      is-release: true
         
   build:
     name: Build
