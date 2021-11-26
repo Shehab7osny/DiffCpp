@@ -16,8 +16,6 @@ jobs:
   codebase:
     name: Codebase
     uses: Shehab7osny/DiffCpp/.github/workflows/codebase.yml@main
-    with:
-      is-release: true
         
   build:
     name: Build
@@ -48,7 +46,7 @@ jobs:
   release-notes:
     name: Release Notes
     needs:
-      - codebase
+      - doxygen-doc
     runs-on: ubuntu-latest
     steps:
       - name: Check
