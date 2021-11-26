@@ -1,0 +1,55 @@
+name: Code Review
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+        
+permissions:
+  deployments: write
+  contents: write
+
+jobs:
+
+  codebase:
+    name: Codebase
+    uses: Shehab7osny/DiffCpp/.github/workflows/codebase.yml@main
+        
+  build:
+    name: Build
+    uses: Shehab7osny/DiffCpp/.github/workflows/build.yml@main
+
+  unit-testing:
+    name: Unit and Block Testing
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Cache GoogleTest Package
+      id: cached-gtest
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-gtest-repo
+      with:
+        path: googletest
+        key: ${{ runner.os }}-build-${{ env.cache-name }}
+
+    - name: Install GoogleTest
+      if: steps.cached-gtest.outputs.cache-hit != 'true'
+      run: mkdir googletest &&
+           git clone https://github.com/google/googletest.git googletest
+
+    - name: Build
+      run: cmake -DBUILD_TESTS=ON .
+
+    - name: Make
+      run: make
+      
+    - name: Run Unit Tests
+      run: ./DiffCpp_tst
