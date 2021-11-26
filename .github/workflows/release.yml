@@ -26,8 +26,17 @@ jobs:
     with:
       username: Shehab7osny
 
+  release-notes:
+    name: Release Notes
+    needs:
+      - codebase
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check
+        run: ls
+
   unit-testing:
-    name: Unit Tests
+    name: Unit and Block Testing
     needs:
       - build
     runs-on: ubuntu-latest
@@ -108,7 +117,7 @@ jobs:
     name: Release Project
     needs:
       - benchmarking
-      - codebase
+      - release-notes
     runs-on: ubuntu-latest
     steps:
     - name: Download Linux Artifact

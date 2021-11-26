@@ -1,5 +1,5 @@
 
-name: Codebase Ops
+name: Codebase Documentation
 
 on:
   workflow_call:
