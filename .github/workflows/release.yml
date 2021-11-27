@@ -167,7 +167,7 @@ jobs:
           });
     - name: Get release
       id: get_release
-      uses: joutvhu/get-release@v1
+      uses: bruceadams/get-release@v1.2.3
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Upload DiffCpp-Linux
