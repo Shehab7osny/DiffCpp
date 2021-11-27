@@ -165,7 +165,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ steps.create-new-release.outputs.upload_url }}
+        upload_url: https://github.com/${{ github.repository }}/archive/refs/tags
         asset_path: DiffCpp
         asset_name: DiffCpp-Linux
         asset_content_type: application/zip
@@ -174,7 +174,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ steps.create-new-release.outputs.upload_url }}
+        upload_url: https://github.com/${{ github.repository }}/archive/refs/tags
         asset_path: DiffCpp.exe
         asset_name: DiffCpp-Windows
         asset_content_type: application/zip
