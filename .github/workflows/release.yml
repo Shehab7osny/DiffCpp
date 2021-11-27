@@ -46,7 +46,7 @@ jobs:
   release-notes:
     name: Release Notes
     needs:
-      - release-project
+      - doxygen-doc
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -143,13 +143,17 @@ jobs:
     name: Release Project
     needs:
       - benchmarking
-      # - release-notes
+      - release-notes
     runs-on: ubuntu-latest
     steps:
     - name: Download Linux Artifact
       uses: actions/download-artifact@v2
       with:
         name: DiffCpp-Linux
+    - name: Get Release Notes
+      run: curl -o release_notes.md |
+          https://api.github.com/repos/${{ github.repository }}/releases/generate-notes |
+          -d '{"tag_name":"v${{ github.event.inputs.release_ver }}"}'
     - name: Create GitHub Release
       id: create-new-release
       uses: actions/create-release@v1
@@ -158,6 +162,7 @@ jobs:
       with:
         tag_name: v${{ github.event.inputs.release_ver }}
         release_name: Release v${{ github.event.inputs.release_ver }}
+        body_path: ./release_notes.md
     - name: Upload Release Asset
       id: upload-release-asset 
       uses: actions/upload-release-asset@v1
