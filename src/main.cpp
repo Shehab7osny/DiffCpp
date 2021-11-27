@@ -4,7 +4,7 @@ int main(int argc, char **argv) {
 
   cout << Starting_MSG << endl;
 
-  // Check for the minimum number of arguments required
+  // Check for the minimum number of arguments required (3)
   if (argc < 3) {
     cout << "Insufficient number of file specifications" << endl;
     return 0;
