@@ -160,12 +160,17 @@ jobs:
             tag_name: "${{ github.event.inputs.release_ver }}",
             generate_release_notes: true
           });
+    - name: Get release
+      id: get_release
+      uses: bruceadams/get-release@v1.2.3
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
     - name: Upload DiffCpp-Linux
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: https://github.com/${{ github.repository }}/archive/refs/tags
+        upload_url: ${{ steps.get_release.outputs.upload_url }}
         asset_path: DiffCpp
         asset_name: DiffCpp-Linux
         asset_content_type: application/zip
@@ -174,7 +179,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: https://github.com/${{ github.repository }}/archive/refs/tags
+        upload_url: ${{ steps.get_release.outputs.upload_url }}
         asset_path: DiffCpp.exe
         asset_name: DiffCpp-Windows
         asset_content_type: application/zip
