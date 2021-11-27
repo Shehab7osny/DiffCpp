@@ -13,137 +13,137 @@ permissions:
 
 jobs:
 
-  # codebase:
-  #   name: Codebase
-  #   uses: Shehab7osny/DiffCpp/.github/workflows/codebase.yml@main
+  codebase:
+    name: Codebase
+    uses: Shehab7osny/DiffCpp/.github/workflows/codebase.yml@main
         
   build:
     name: Build
     uses: Shehab7osny/DiffCpp/.github/workflows/build.yml@main
     
-  # doxygen-doc:
-  #   environment:
-  #     name: Doxygen Documentation
-  #     url: https://shehab7osny.github.io/DiffCpp/include/
-  #   name: Generate Documentation
-  #   needs:
-  #     - codebase
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: Checkout Repository
-  #     uses: actions/checkout@v2
-  #   - name: Run Doxygen
-  #     uses: mattnotmitt/doxygen-action@v1
-  #     with:
-  #         working-directory: 'include/'
-  #   - name: Deploy to GitHub Pages
-  #     uses: peaceiris/actions-gh-pages@v3
-  #     with:
-  #       github_token: ${{ secrets.GITHUB_TOKEN }}
-  #       publish_dir: ./include/html
-  #       destination_dir: ./include
+  doxygen-doc:
+    environment:
+      name: Doxygen Documentation
+      url: https://shehab7osny.github.io/DiffCpp/include/
+    name: Generate Documentation
+    needs:
+      - codebase
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Run Doxygen
+      uses: mattnotmitt/doxygen-action@v1
+      with:
+          working-directory: 'include/'
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./include/html
+        destination_dir: ./include
 
-  # release-notes:
-  #   name: Release Notes
-  #   needs:
-  #     - doxygen-doc
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
-  #     - name: Create Release Notes
-  #       uses: actions/github-script@v4.0.2
-  #       with:
-  #         github-token: ${{secrets.GITHUB_TOKEN}}
-  #         script: |
-  #           await github.request(`POST /repos/${{ github.repository }}/releases/generate-notes`, {
-  #             tag_name: "v${{ github.event.inputs.release_ver }}"
-  #           });
+  release-notes:
+    name: Release Notes
+    needs:
+      - doxygen-doc
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Create Release Notes
+        uses: actions/github-script@v4.0.2
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            await github.request(`POST /repos/${{ github.repository }}/releases/generate-notes`, {
+              tag_name: "v${{ github.event.inputs.release_ver }}"
+            });
 
 
-  # unit-testing:
-  #   name: Unit and Block Testing
-  #   needs:
-  #     - build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: Checkout Repository
-  #     uses: actions/checkout@v2
+  unit-testing:
+    name: Unit and Block Testing
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
-  #   - name: Cache GoogleTest Package
-  #     id: cached-gtest
-  #     uses: actions/cache@v2
-  #     env:
-  #       cache-name: cache-gtest-repo
-  #     with:
-  #       path: googletest
-  #       key: ${{ runner.os }}-build-${{ env.cache-name }}
+    - name: Cache GoogleTest Package
+      id: cached-gtest
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-gtest-repo
+      with:
+        path: googletest
+        key: ${{ runner.os }}-build-${{ env.cache-name }}
 
-  #   - name: Install GoogleTest
-  #     if: steps.cached-gtest.outputs.cache-hit != 'true'
-  #     run: mkdir googletest &&
-  #          git clone https://github.com/google/googletest.git googletest
+    - name: Install GoogleTest
+      if: steps.cached-gtest.outputs.cache-hit != 'true'
+      run: mkdir googletest &&
+           git clone https://github.com/google/googletest.git googletest
 
-  #   - name: Build
-  #     run: cmake -DBUILD_TESTS=ON .
+    - name: Build
+      run: cmake -DBUILD_TESTS=ON .
 
-  #   - name: Make
-  #     run: make
+    - name: Make
+      run: make
       
-  #   - name: Run Unit Tests
-  #     run: ./DiffCpp_tst
+    - name: Run Unit Tests
+      run: ./DiffCpp_tst
 
-  # benchmarking:
-  #   environment:
-  #     name: Benchmark Results
-  #     url: https://shehab7osny.github.io/DiffCpp/dev/bench
-  #   name: Benchmark (Performance)
-  #   needs:
-  #     - unit-testing
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: Checkout Repository
-  #     uses: actions/checkout@v2
+  benchmarking:
+    environment:
+      name: Benchmark Results
+      url: https://shehab7osny.github.io/DiffCpp/dev/bench
+    name: Benchmark (Performance)
+    needs:
+      - unit-testing
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
-  #   - name: Cache Google Benchmark Package
-  #     id: cached-benchmark
-  #     uses: actions/cache@v2
-  #     env:
-  #       cache-name: cache-gbench-repo
-  #     with:
-  #       path: benchmark
-  #       key: ${{ runner.os }}-build-${{ env.cache-name }}
+    - name: Cache Google Benchmark Package
+      id: cached-benchmark
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-gbench-repo
+      with:
+        path: benchmark
+        key: ${{ runner.os }}-build-${{ env.cache-name }}
 
-  #   - name: Install Google Benchmark
-  #     if: steps.cached-benchmark.outputs.cache-hit != 'true'
-  #     run: mkdir benchmark &&
-  #          git clone https://github.com/google/benchmark.git benchmark
+    - name: Install Google Benchmark
+      if: steps.cached-benchmark.outputs.cache-hit != 'true'
+      run: mkdir benchmark &&
+           git clone https://github.com/google/benchmark.git benchmark
 
-  #   - name: Build
-  #     run: cmake -DBENCHMARK_DOWNLOAD_DEPENDENCIES=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_BENCH=ON .
+    - name: Build
+      run: cmake -DBENCHMARK_DOWNLOAD_DEPENDENCIES=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_BENCH=ON .
 
-  #   - name: Make
-  #     run: make
+    - name: Make
+      run: make
       
-  #   - name: Run Benchmark
-  #     run: ls && ./DiffCpp_BENCH --benchmark_format=json | tee benchmark_result.json
+    - name: Run Benchmark
+      run: ls && ./DiffCpp_BENCH --benchmark_format=json | tee benchmark_result.json
 
-  #   - name: Store benchmark result
-  #     uses: benchmark-action/github-action-benchmark@v1
-  #     with:
-  #       tool: 'googlecpp'
-  #       output-file-path: benchmark_result.json
-  #       github-token: ${{ secrets.GITHUB_TOKEN }}
-  #       fail-on-alert: true
-  #       comment-on-alert: true
-  #       # Update
-  #       auto-push: true
+    - name: Store benchmark result
+      uses: benchmark-action/github-action-benchmark@v1
+      with:
+        tool: 'googlecpp'
+        output-file-path: benchmark_result.json
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        fail-on-alert: true
+        comment-on-alert: true
+        # Update
+        auto-push: true
 
   release-project:
     name: Release Project
     needs:
-      # - benchmarking
-      # - release-notes
+      - benchmarking
+      - release-notes
       - build
     runs-on: ubuntu-latest
     steps:
@@ -162,29 +162,28 @@ jobs:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
           await github.request(`POST /repos/${{ github.repository }}/releases`, {
-            tag_name: "${{ github.event.inputs.release_ver }}",
-            generate_release_notes: true
+            tag_name: "${{ github.event.inputs.release_ver }}"
           });
-    - name: Get release
-      id: get_release
-      uses: bruceadams/get-release@v1.2.3
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Upload DiffCpp-Linux
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.get_release.outputs.upload_url }}
-        asset_path: DiffCpp
-        asset_name: DiffCpp-Linux
-        asset_content_type: application/zip
-    - name: Upload DiffCpp-Windows
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.get_release.outputs.upload_url }}
-        asset_path: DiffCpp.exe
-        asset_name: DiffCpp-Windows
-        asset_content_type: application/zip
+    # - name: Get release
+    #   id: get_release
+    #   uses: bruceadams/get-release@v1.2.3
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # - name: Upload DiffCpp-Linux
+    #   uses: actions/upload-release-asset@v1
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   with:
+    #     upload_url: ${{ steps.get_release.outputs.upload_url }}
+    #     asset_path: DiffCpp
+    #     asset_name: DiffCpp-Linux
+    #     asset_content_type: application/zip
+    # - name: Upload DiffCpp-Windows
+    #   uses: actions/upload-release-asset@v1
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   with:
+    #     upload_url: ${{ steps.get_release.outputs.upload_url }}
+    #     asset_path: DiffCpp.exe
+    #     asset_name: DiffCpp-Windows
+    #     asset_content_type: application/zip
