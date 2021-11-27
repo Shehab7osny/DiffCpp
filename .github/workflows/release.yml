@@ -56,7 +56,10 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            await github.request(`POST /repos/${{ github.repository }}/releases/generate-notes`);
+            await github.request(`POST /repos/${{ github.repository }}/releases/generate-notes`, {
+              tag_name: "v${{ github.event.inputs.release_ver }}",
+              generate_release_notes: true
+            });
 
 
   unit-testing:
