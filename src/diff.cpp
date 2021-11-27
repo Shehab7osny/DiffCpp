@@ -43,7 +43,7 @@ vector<string> DiffSession::getLinesFromFile(string path) {
     inputFile.close();
   }
 
-  // Terminate the program
+  // Terminate the program in case the directory was not found
   else {
     cout << "Can not open the specified directory - No such file or folder"
          << endl;
