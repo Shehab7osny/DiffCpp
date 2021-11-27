@@ -150,6 +150,16 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: DiffCpp-Linux
+    - name: Create GitHub Release
+      id: create-new-release
+      uses: actions/github-script@v4.0.2
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          await github.request(`POST /repos/${{ github.repository }}/releases`, {
+            tag_name: "${{ github.event.inputs.release_ver }}",
+            generate_release_notes: true
+          });
     - name: Upload DiffCpp-Linux
       uses: actions/upload-release-asset@v1
       env:
