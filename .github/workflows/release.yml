@@ -46,7 +46,7 @@ jobs:
   release-notes:
     name: Release Notes
     needs:
-      - doxygen-doc
+      - release-project
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -143,7 +143,7 @@ jobs:
     name: Release Project
     needs:
       - benchmarking
-      - release-notes
+      # - release-notes
     runs-on: ubuntu-latest
     steps:
     - name: Download Linux Artifact
