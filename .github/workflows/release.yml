@@ -166,15 +166,6 @@ jobs:
       uses: jossef/action-latest-release-info@v1.1.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Upload DiffCpp-Linux
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.get_release.outputs.upload_url }}
-        asset_path: DiffCpp
-        asset_name: DiffCpp-Linux
-        asset_content_type: application/zip
     - name: Upload DiffCpp-Windows
       uses: actions/upload-release-asset@v1
       env:
