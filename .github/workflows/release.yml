@@ -151,6 +151,10 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: DiffCpp-Linux
+    - name: Download Windows Artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: DiffCpp-Windows
     - name: Create GitHub Release
       id: create-new-release
       uses: actions/github-script@v4.0.2
