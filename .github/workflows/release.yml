@@ -151,9 +151,9 @@ jobs:
       with:
         name: DiffCpp-Linux
     - name: Get Release Notes
-      run: curl -o release_notes.md |
-          https://api.github.com/repos/${{ github.repository }}/releases/generate-notes |
-          -d '{"tag_name":"v${{ github.event.inputs.release_ver }}"}'
+      run: curl -o release_notes.md \
+           https://api.github.com/repos/${{ github.repository }}/releases/generate-notes \
+           -d '{"tag_name":"v${{ github.event.inputs.release_ver }}"}'
     - name: Create GitHub Release
       id: create-new-release
       uses: actions/create-release@v1
