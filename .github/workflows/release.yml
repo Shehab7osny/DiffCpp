@@ -125,6 +125,7 @@ jobs:
     name: Release Project
     needs:
       - benchmarking
+      - doxygen-doc
     runs-on: ubuntu-latest
     steps:
     - name: Download Linux Artifact
