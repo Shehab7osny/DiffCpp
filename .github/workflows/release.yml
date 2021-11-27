@@ -43,24 +43,6 @@ jobs:
         publish_dir: ./include/html
         destination_dir: ./include
 
-  release-notes:
-    name: Release Notes
-    needs:
-      - doxygen-doc
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Create Release Notes
-        uses: actions/github-script@v4.0.2
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            await github.request(`POST /repos/${{ github.repository }}/releases/generate-notes`, {
-              tag_name: "v${{ github.event.inputs.release_ver }}"
-            });
-
-
   unit-testing:
     name: Unit and Block Testing
     needs:
@@ -162,7 +144,8 @@ jobs:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
           await github.request(`POST /repos/${{ github.repository }}/releases`, {
-            tag_name: "${{ github.event.inputs.release_ver }}"
+            tag_name: "${{ github.event.inputs.release_ver }}",
+            generate_release_notes: true
           });
     # - name: Get release
     #   id: get_release
