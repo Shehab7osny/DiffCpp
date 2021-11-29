@@ -78,7 +78,7 @@ vector<vector<string>> DiffSession::getDiff(vector<string> linesFile1,
                        get<xCoordinate>(mapGrid[k + 1]),
            moveDown = (k == -d) || (k != d && checkPath);
 
-      // This is to add a line from the updated file
+      // Add a line from the updated file
       if (moveDown) {
         updateList = get<lastUpdate>(mapGrid[k + 1]);
         xPrevious = get<xCoordinate>(mapGrid[k + 1]);
