@@ -43,7 +43,7 @@ jobs:
         publish_dir: ./include/html
         destination_dir: ./include
 
-  unit-testing:
+  verification:
     name: Unit and Block Testing
     needs:
       - build
