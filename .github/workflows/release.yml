@@ -64,7 +64,7 @@ jobs:
     - name: Install GoogleTest
       if: steps.cached-gtest.outputs.cache-hit != 'true'
       run: mkdir googletest &&
-           git clone https://github.com/google/googletest.git googletest
+           git clone https://github.com/google/googletest.git
 
     - name: Build
       run: cmake -DBUILD_TESTS=ON .
