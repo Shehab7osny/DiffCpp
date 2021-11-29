@@ -22,7 +22,7 @@ jobs:
     name: Build
     uses: Shehab7osny/DiffCpp/.github/workflows/build.yml@main
 
-  unit-testing:
+  verification:
     name: Unit and Block Testing
     needs:
       - build
