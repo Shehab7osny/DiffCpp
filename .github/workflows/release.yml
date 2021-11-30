@@ -13,27 +13,27 @@ permissions:
 
 jobs:
 
-  code-review:
+  codebase:
     name: Codebase
-    uses: Shehab7osny/DiffCpp/.github/workflows/code-review.yml@main
-    with:
-      documentation: true
-
-  # codebase:
-  #   name: Codebase
-  #   uses: Shehab7osny/DiffCpp/.github/workflows/codebase.yml@main
+    uses: Shehab7osny/DiffCpp/.github/workflows/codebase.yml@main
         
-  # build:
-  #   name: Build
-  #   uses: Shehab7osny/DiffCpp/.github/workflows/build.yml@main
+  build:
+    name: Build
+    uses: Shehab7osny/DiffCpp/.github/workflows/build.yml@main
     
+  verification:
+    name: Testing
+    needs:
+      - build
+    uses: Shehab7osny/DiffCpp/.github/workflows/testing.yml@main
+
   doxygen-doc:
     environment:
       name: Doxygen Documentation
       url: https://shehab7osny.github.io/DiffCpp/include/
     name: Generate Documentation
     needs:
-      - code-review
+      - codebase
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
@@ -49,45 +49,13 @@ jobs:
         publish_dir: ./include/html
         destination_dir: ./include
 
-  # verification:
-  #   name: Unit and Block Testing
-  #   needs:
-  #     - build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: Checkout Repository
-  #     uses: actions/checkout@v2
-
-  #   - name: Cache GoogleTest Package
-  #     id: cached-gtest
-  #     uses: actions/cache@v2
-  #     env:
-  #       cache-name: cache-gtest-repo
-  #     with:
-  #       path: googletest
-  #       key: ${{ runner.os }}-build-${{ env.cache-name }}
-
-  #   - name: Install GoogleTest
-  #     if: steps.cached-gtest.outputs.cache-hit != 'true'
-  #     run: mkdir googletest &&
-  #          git clone https://github.com/google/googletest.git
-
-  #   - name: Build
-  #     run: cmake -DBUILD_TESTS=ON .
-
-  #   - name: Make
-  #     run: make
-      
-  #   - name: Run Unit Tests
-  #     run: ./DiffCpp_tst
-
   benchmarking:
     environment:
       name: Benchmark Results
       url: https://shehab7osny.github.io/DiffCpp/dev/bench
     name: Benchmark (Performance)
     needs:
-      - code-review
+      - verification
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
@@ -124,7 +92,6 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         fail-on-alert: true
         comment-on-alert: true
-        # Update
         auto-push: true
 
   release-project:
@@ -152,26 +119,3 @@ jobs:
             tag_name: "${{ github.event.inputs.release_ver }}",
             generate_release_notes: true
           });
-    # - name: Get release
-    #   id: get_release
-    #   uses: bruceadams/get-release@v1.2.3
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    # - name: Upload DiffCpp-Linux
-    #   uses: actions/upload-release-asset@v1
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #   with:
-    #     upload_url: ${{ steps.get_release.outputs.upload_url }}
-    #     asset_path: DiffCpp
-    #     asset_name: DiffCpp-Linux
-    #     asset_content_type: application/zip
-    # - name: Upload DiffCpp-Windows
-    #   uses: actions/upload-release-asset@v1
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #   with:
-    #     upload_url: ${{ steps.get_release.outputs.upload_url }}
-    #     asset_path: DiffCpp.exe
-    #     asset_name: DiffCpp-Windows
-    #     asset_content_type: application/zip
