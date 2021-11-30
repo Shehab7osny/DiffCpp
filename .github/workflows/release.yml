@@ -16,6 +16,8 @@ jobs:
   code-review:
     name: Codebase
     uses: Shehab7osny/DiffCpp/.github/workflows/code-review.yml@main
+    with:
+      documentation: true
 
   # codebase:
   #   name: Codebase
