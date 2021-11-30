@@ -27,11 +27,11 @@ jobs:
     uses: Shehab7osny/DiffCpp/.github/workflows/codebase.yml@main
         
   build:
+    if: ${{ inputs.testing }} == false
     name: Build
     uses: Shehab7osny/DiffCpp/.github/workflows/build.yml@main
 
   verification:
-    if: ${{ inputs.testing }} == 'true'
     name: Unit and Block Testing
     needs:
       - build
