@@ -6,9 +6,6 @@ on:
       documentation:
         required: true
         type: boolean
-      testing:
-        required: true
-        type: boolean
   push:
     branches:
       - main
@@ -27,7 +24,6 @@ jobs:
     uses: Shehab7osny/DiffCpp/.github/workflows/codebase.yml@main
         
   build:
-    if: inputs.testing == 'true'
     name: Build
     uses: Shehab7osny/DiffCpp/.github/workflows/build.yml@main
 
