@@ -19,18 +19,54 @@ permissions:
 
 jobs:
 
-  codebase:
-    name: Codebase
-    uses: Shehab7osny/DiffCpp/.github/workflows/codebase.yml@main
+  clang-format-check:
+    name: Format Check
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Check Codebase Format
+      uses: RafikFarhad/clang-format-github-action@v1.0.1
+      with:
+        sources: "src/*.cpp,include/*.h,test/*.cpp"
         
-  build:
-    name: Build
-    uses: Shehab7osny/DiffCpp/.github/workflows/build.yml@main
+  build-windows:
+    name: Windows
+    runs-on: windows-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Build
+      run: cmake .
+    - name: Make
+      run: cmake --build .
+    - name: Upload Windows Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: DiffCpp-Windows
+        path: Debug/DiffCpp.exe
+
+  build-linux:
+    name: Linux
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Build
+      run: cmake .
+    - name: Make
+      run: make
+    - name: Upload Linux Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: DiffCpp-Linux
+        path: ./DiffCpp
 
   verification:
     name: Unit and Block Testing
     needs:
-      - build
+      - build-windows
+      - build-linux
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
