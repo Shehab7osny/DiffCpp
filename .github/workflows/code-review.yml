@@ -3,9 +3,12 @@ name: Code Review
 on:
   workflow_call:
     inputs:
-      username:
+      documentation:
         required: true
-        type: string
+        type: boolean
+      testing:
+        required: true
+        type: boolean
   push:
     branches:
       - main
@@ -28,6 +31,7 @@ jobs:
     uses: Shehab7osny/DiffCpp/.github/workflows/build.yml@main
 
   verification:
+    if: ${{ inputs.testing }} == 'true'
     name: Unit and Block Testing
     needs:
       - build
