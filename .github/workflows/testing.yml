@@ -7,8 +7,6 @@ jobs:
 
   verification:
     name: Unit and Block
-    needs:
-      - build
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
