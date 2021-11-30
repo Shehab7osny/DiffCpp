@@ -99,6 +99,7 @@ jobs:
     needs:
       - benchmarking
       - doxygen-doc
+      - build
     runs-on: ubuntu-latest
     steps:
     - name: Download Linux Artifact
