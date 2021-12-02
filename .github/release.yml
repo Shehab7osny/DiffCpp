@@ -9,8 +9,8 @@ changelog:
     - title: Exciting New Features
       labels:
         - enhancement
-    - title: Exciting New Features
-      labels: Bug Fixes
+    - title: Bug Fixes
+      labels: 
         - bug-fix
     - title: Other Changes
       labels:
