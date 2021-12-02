@@ -64,7 +64,7 @@ vector<vector<string>> DiffSession::getDiff(vector<string> linesFile1,
   // Hashmap to backtrack Myers' graph and get the best path of commits
   unordered_map<int, tuple<int, vector<vector<string>>>> mapGrid;
 
-  // Commit history list with all Keeps, Insertions and Deletions
+  // Commit history list with Keeps, Insertions and Deletions
   vector<vector<string>> updateList;
 
   // Used to access the tuple elements
