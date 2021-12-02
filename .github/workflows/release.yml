@@ -96,7 +96,7 @@ jobs:
 
   release-project:
     name: Release Project
-    needs:
+    # needs:
     #   - benchmarking
     #   - doxygen-doc
     runs-on: ubuntu-latest
