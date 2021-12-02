@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1638464604677,
+  "lastUpdate": 1638466065213,
   "repoUrl": "https://github.com/Shehab7osny/DiffCpp",
   "entries": {
     "Benchmark": [
@@ -2002,6 +2002,34 @@ window.BENCHMARK_DATA = {
             "value": 2367588.535593259,
             "unit": "ns/iter",
             "extra": "iterations: 295\ncpu: 2365867.935593221 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Shehab Hosny",
+            "username": "Shehab7osny",
+            "email": "shehab20156@gmail.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "cac3ea525fe9cd5e9f23819de4001f4ea25ca78b",
+          "message": "Solved an issue with input 🔵\n\nInput = 🔵\r\nExpected Output = 🔴\r\nActual Output (Before Fix) = ⚪",
+          "timestamp": "2021-12-02T17:23:03Z",
+          "url": "https://github.com/Shehab7osny/DiffCpp/commit/cac3ea525fe9cd5e9f23819de4001f4ea25ca78b"
+        },
+        "date": 1638466064127,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "DiffCpp_Benchmark",
+            "value": 2913014.325000063,
+            "unit": "ns/iter",
+            "extra": "iterations: 240\ncpu: 2911781.8333333335 ns\nthreads: 1"
           }
         ]
       }
