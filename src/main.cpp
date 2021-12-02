@@ -10,7 +10,7 @@ int main(int argc, char **argv) {
     return 0;
   }
 
-  // Start a single session for files comparison
+  // Start a single session for file comparison
   DiffSession session(argc, argv);
 
   // Get the diff and Display it for the running session
