@@ -99,7 +99,7 @@ vector<vector<string>> DiffSession::getDiff(vector<string> linesFile1,
         if (this->isSameFile)
           this->isSameFile = false;
       }
-      // Update the history list with a Deletion
+      // Update the history list with a deletion
       else if (1 <= x && x <= linesCount1) {
         updateList.push_back({"Delete", linesFile1[x - 1]});
         if (this->isSameFile)
