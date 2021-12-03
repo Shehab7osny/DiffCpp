@@ -11,7 +11,6 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
-
     - name: Cache GoogleTest Package
       id: cached-gtest
       uses: actions/cache@v2
@@ -20,17 +19,13 @@ jobs:
       with:
         path: googletest
         key: ${{ runner.os }}-build-${{ env.cache-name }}
-
     - name: Install GoogleTest
       if: steps.cached-gtest.outputs.cache-hit != 'true'
       run: mkdir googletest &&
            git clone https://github.com/google/googletest.git
-
     - name: Build
       run: cmake -DBUILD_TESTS=ON .
-
     - name: Make
       run: make
-      
     - name: Run Unit Tests
       run: ./DiffCpp_tst
