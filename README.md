@@ -123,3 +123,6 @@ File1 -> recursion_Old.py
 
 ## Contributing
 Pull requests are welcomed. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+The scripts and documentation in this project are released under the [MIT License](LICENSE)
